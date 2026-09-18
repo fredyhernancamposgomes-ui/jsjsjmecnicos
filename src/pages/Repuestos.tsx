@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { ShoppingCart, Search, Truck, Filter, Plus, Minus, MessageCircle } from 'lucide-react';
+import { ShoppingCart, Search, Plus, Minus, MessageCircle, X } from 'lucide-react';
 import { repuestos } from '../data';
 
 // ============================================
-// PÁGINA DE REPUESTOS
+// CATÁLOGO DE REPUESTOS - Premium
 // ============================================
 const RepuestosPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -20,10 +20,7 @@ const RepuestosPage: React.FC = () => {
     return matchSearch && matchCategory;
   });
 
-  const addToCart = (id: string) => {
-    setCart(prev => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
-  };
-
+  const addToCart = (id: string) => setCart(prev => ({ ...prev, [id]: (prev[id] || 0) + 1 }));
   const removeFromCart = (id: string) => {
     setCart(prev => {
       const newCart = { ...prev };
@@ -43,32 +40,35 @@ const RepuestosPage: React.FC = () => {
 
   const handleWhatsAppOrder = () => {
     const items = cartItems.map(item => `• ${item!.nombre} x${item!.qty} - S/ ${(item!.precio * item!.qty).toFixed(2)}`).join('\n');
-    const message = `¡Hola! Quiero hacer un pedido de repuestos:\n\n${items}\n\nTotal: S/ ${cartTotal.toFixed(2)}`;
+    const message = `Hola, quiero hacer un pedido:\n\n${items}\n\nTotal: S/ ${cartTotal.toFixed(2)}`;
     window.open(`https://wa.me/51999999999?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (
-    <div className="min-h-screen pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-28 pb-20 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
-          <div>
-            <h1 className="font-heading text-3xl sm:text-4xl font-black text-white mb-2">
-              Catálogo de Repuestos
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+          <div className="max-w-2xl">
+            <p className="text-xs text-ember uppercase tracking-widest font-medium mb-4">
+              Catálogo
+            </p>
+            <h1 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight text-bone leading-tight mb-4">
+              Repuestos.
             </h1>
-            <p className="text-gray-400">
-              Repuestos de calidad a precios competitivos para tu taller
+            <p className="text-lg text-ash">
+              Calidad garantizada, precios competitivos.
             </p>
           </div>
-          {/* Cart button */}
+
           <button
             onClick={() => setShowCart(!showCart)}
-            className="relative inline-flex items-center gap-2 px-5 py-3 bg-[#FF6B00] text-white font-bold rounded-xl hover:bg-[#E55E00] transition-colors"
+            className="relative inline-flex items-center gap-2 px-5 py-3 bg-bone text-ink font-medium rounded-xl hover:bg-bone/90 transition-colors self-start"
           >
-            <ShoppingCart size={20} />
+            <ShoppingCart size={16} />
             Carrito
             {cartCount > 0 && (
-              <span className="absolute -top-2 -right-2 w-6 h-6 bg-[#D32F2F] rounded-full flex items-center justify-center text-white text-xs font-bold">
+              <span className="w-5 h-5 rounded-full bg-ember text-ink text-xs font-bold flex items-center justify-center">
                 {cartCount}
               </span>
             )}
@@ -77,128 +77,134 @@ const RepuestosPage: React.FC = () => {
 
         {/* Cart panel */}
         {showCart && (
-          <div className="bg-[#1F1F1F] rounded-2xl p-6 border border-[#FF6B00]/30 mb-8 animate-fade-in">
-            <h3 className="text-white font-bold text-lg mb-4">Tu Pedido</h3>
+          <div className="bg-ink-soft rounded-2xl border border-line-soft p-6 mb-10 animate-fade-in">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-bone font-display font-semibold text-lg">Tu pedido</h3>
+              <button onClick={() => setShowCart(false)} className="text-smoke hover:text-bone">
+                <X size={18} />
+              </button>
+            </div>
             {cartItems.length > 0 ? (
               <>
-                <div className="space-y-3 mb-6">
+                <div className="space-y-2 mb-6">
                   {cartItems.map((item) => (
-                    <div key={item!.id} className="flex items-center justify-between p-3 bg-[#0A0A0A] rounded-xl">
+                    <div key={item!.id} className="flex items-center justify-between p-4 bg-ink rounded-xl">
                       <div className="flex-1">
-                        <p className="text-white text-sm font-medium">{item!.nombre}</p>
-                        <p className="text-gray-500 text-xs">S/ {item!.precio.toFixed(2)} c/u</p>
+                        <p className="text-bone text-sm font-medium">{item!.nombre}</p>
+                        <p className="text-smoke text-xs">S/ {item!.precio.toFixed(2)} c/u</p>
                       </div>
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-4">
                         <div className="flex items-center gap-2">
-                          <button onClick={() => removeFromCart(item!.id)} className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-white/20">
-                            <Minus size={14} />
+                          <button onClick={() => removeFromCart(item!.id)} className="w-7 h-7 rounded-lg border border-line flex items-center justify-center text-smoke hover:text-bone hover:border-bone">
+                            <Minus size={12} />
                           </button>
-                          <span className="text-white font-bold text-sm w-6 text-center">{item!.qty}</span>
-                          <button onClick={() => addToCart(item!.id)} className="w-7 h-7 rounded-lg bg-white/10 flex items-center justify-center text-white hover:bg-white/20">
-                            <Plus size={14} />
+                          <span className="text-bone text-sm font-medium w-6 text-center">{item!.qty}</span>
+                          <button onClick={() => addToCart(item!.id)} className="w-7 h-7 rounded-lg border border-line flex items-center justify-center text-smoke hover:text-bone hover:border-bone">
+                            <Plus size={12} />
                           </button>
                         </div>
-                        <span className="text-[#FF6B00] font-bold text-sm w-20 text-right">
+                        <span className="text-ember font-medium text-sm w-20 text-right">
                           S/ {(item!.precio * item!.qty).toFixed(2)}
                         </span>
                       </div>
                     </div>
                   ))}
                 </div>
-                <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                  <span className="text-white font-bold text-lg">Total: S/ {cartTotal.toFixed(2)}</span>
+                <div className="flex items-center justify-between pt-4 border-t border-line-soft">
+                  <div>
+                    <p className="text-sm text-smoke">Total</p>
+                    <p className="text-bone font-display text-2xl font-semibold">S/ {cartTotal.toFixed(2)}</p>
+                  </div>
                   <button
                     onClick={handleWhatsAppOrder}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#25D366] text-white font-bold rounded-xl hover:bg-[#20BD5A] transition-colors"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-bone text-ink font-medium rounded-xl hover:bg-bone/90 transition-colors"
                   >
-                    <MessageCircle size={18} />
+                    <MessageCircle size={16} />
                     Pedir por WhatsApp
                   </button>
                 </div>
               </>
             ) : (
-              <p className="text-gray-500 text-center py-4">Tu carrito está vacío</p>
+              <p className="text-smoke text-center py-8">Tu carrito está vacío</p>
             )}
           </div>
         )}
 
-        {/* Search & Filters */}
-        <div className="bg-[#1F1F1F] rounded-2xl p-4 border border-white/10 mb-8">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="relative flex-1">
-              <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Buscar repuesto o vehículo compatible..."
-                className="w-full pl-9 pr-4 py-3 bg-[#0A0A0A] border border-white/10 rounded-xl text-white placeholder-gray-600 focus:outline-none focus:border-[#FF6B00] transition-colors"
-              />
-            </div>
-            <select
-              value={categoriaFilter}
-              onChange={(e) => setCategoriaFilter(e.target.value)}
-              className="px-4 py-3 bg-[#0A0A0A] border border-white/10 rounded-xl text-white appearance-none focus:outline-none focus:border-[#FF6B00] transition-colors"
-            >
-              <option value="">Todas las categorías</option>
-              {categorias.map(c => (
-                <option key={c} value={c}>{c}</option>
-              ))}
-            </select>
+        {/* Filters */}
+        <div className="flex flex-col sm:flex-row gap-3 mb-10">
+          <div className="relative flex-1">
+            <Search size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-smoke" />
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Buscar repuesto o vehículo..."
+              className="w-full pl-10 pr-4 py-3 bg-ink-soft border border-line rounded-xl text-bone text-sm placeholder-fog focus:outline-none focus:border-ember transition-colors"
+            />
           </div>
+          <select
+            value={categoriaFilter}
+            onChange={(e) => setCategoriaFilter(e.target.value)}
+            className="px-4 py-3 bg-ink-soft border border-line rounded-xl text-bone text-sm appearance-none focus:outline-none focus:border-ember transition-colors cursor-pointer"
+          >
+            <option value="">Todas las categorías</option>
+            {categorias.map(c => (
+              <option key={c} value={c}>{c}</option>
+            ))}
+          </select>
         </div>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {/* Products */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-line-soft border border-line-soft rounded-2xl overflow-hidden">
           {filteredRepuestos.map((repuesto) => (
             <div
               key={repuesto.id}
-              className="bg-[#1F1F1F] rounded-2xl border border-white/5 hover:border-[#FF6B00]/30 transition-all duration-300 overflow-hidden group"
+              className="bg-ink p-6 hover:bg-ink-soft transition-colors group"
             >
-              {/* Image placeholder */}
-              <div className="h-36 bg-gradient-to-br from-[#1a1a1a] to-[#2a2a2a] flex items-center justify-center relative">
-                <Truck size={40} className="text-gray-700 group-hover:text-[#FF6B00]/30 transition-colors" />
-                <span className="absolute top-3 left-3 px-2 py-1 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-medium rounded-full">
-                  {repuesto.categoria}
-                </span>
+              {/* Image area */}
+              <div className="aspect-square bg-ink-muted rounded-xl mb-5 flex items-center justify-center relative overflow-hidden">
+                <div className="w-16 h-16 rounded-2xl bg-ember-glow-strong border border-ember/20 flex items-center justify-center">
+                  <span className="text-ember font-display text-xl font-semibold">{repuesto.nombre.charAt(0)}</span>
+                </div>
                 {repuesto.stock < 20 && (
-                  <span className="absolute top-3 right-3 px-2 py-1 bg-[#D32F2F]/10 text-[#D32F2F] text-xs font-medium rounded-full">
-                    ¡Últimas unidades!
+                  <span className="absolute top-3 right-3 px-2 py-1 bg-danger/10 border border-danger/20 text-danger text-xs rounded-full">
+                    Últimas unidades
                   </span>
                 )}
               </div>
 
-              {/* Content */}
-              <div className="p-4">
-                <h3 className="text-white font-semibold text-sm mb-2 group-hover:text-[#FF6B00] transition-colors">
-                  {repuesto.nombre}
-                </h3>
-                <p className="text-gray-500 text-xs mb-3">
-                  Compatible: {repuesto.compatible.join(', ')}
-                </p>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-[#FF6B00] font-bold text-lg">S/ {repuesto.precio.toFixed(2)}</span>
-                  <span className="text-gray-500 text-xs">Stock: {repuesto.stock}</span>
-                </div>
-                <p className="text-gray-600 text-xs mb-4">Proveedor: {repuesto.proveedor}</p>
-                
-                <button
-                  onClick={() => addToCart(repuesto.id)}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-[#FF6B00] text-white font-semibold text-sm rounded-xl hover:bg-[#E55E00] transition-colors"
-                >
-                  <ShoppingCart size={16} />
-                  Agregar al carrito
-                </button>
+              <span className="text-xs text-ember font-medium uppercase tracking-wider">
+                {repuesto.categoria}
+              </span>
+              <h3 className="text-bone font-medium mt-1 mb-2 group-hover:text-ember transition-colors">
+                {repuesto.nombre}
+              </h3>
+              <p className="text-xs text-smoke mb-4">
+                {repuesto.compatible.join(' · ')}
+              </p>
+
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-bone font-display text-xl font-semibold">
+                  S/ {repuesto.precio.toFixed(2)}
+                </span>
+                <span className="text-xs text-smoke">Stock: {repuesto.stock}</span>
               </div>
+
+              <button
+                onClick={() => addToCart(repuesto.id)}
+                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-line text-bone text-sm font-medium rounded-xl hover:border-bone hover:bg-bone/5 transition-colors"
+              >
+                <ShoppingCart size={14} />
+                Agregar
+              </button>
             </div>
           ))}
         </div>
 
         {filteredRepuestos.length === 0 && (
-          <div className="text-center py-16">
-            <Truck size={48} className="text-gray-700 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-white mb-2">No se encontraron repuestos</h3>
-            <p className="text-gray-400">Intenta con otros términos de búsqueda</p>
+          <div className="text-center py-24">
+            <p className="text-ash mb-2">No se encontraron repuestos</p>
+            <p className="text-smoke text-sm">Intenta con otros términos de búsqueda</p>
           </div>
         )}
       </div>

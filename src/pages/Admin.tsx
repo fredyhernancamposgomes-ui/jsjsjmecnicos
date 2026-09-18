@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { Users, Wrench, Star, TrendingUp, CheckCircle, XCircle, Eye, BarChart3, AlertCircle } from 'lucide-react';
+import { Check, X, Eye, Star } from 'lucide-react';
 import { talleres, resenas } from '../data';
 
 // ============================================
-// PANEL DE ADMINISTRACIÓN
+// PANEL DE ADMINISTRACIÓN - Premium
 // ============================================
 const AdminPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'dashboard' | 'talleres' | 'resenas'>('dashboard');
 
-  // Stats
   const totalTalleres = talleres.length;
   const talleresVerificados = talleres.filter(t => t.verificado).length;
   const talleresPendientes = talleres.filter(t => !t.verificado).length;
@@ -16,134 +15,90 @@ const AdminPage: React.FC = () => {
   const promedioCalificacion = (talleres.reduce((sum, t) => sum + t.calificacion, 0) / talleres.length).toFixed(1);
 
   return (
-    <div className="min-h-screen pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen pt-28 pb-20 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="font-heading text-3xl sm:text-4xl font-black text-white mb-2">
-            Panel de Administración
-          </h1>
-          <p className="text-gray-400">
-            Gestiona talleres, reseñas y estadísticas de la plataforma
+        <div className="mb-12">
+          <p className="text-xs text-ember uppercase tracking-widest font-medium mb-4">
+            Administración
           </p>
+          <h1 className="font-display text-4xl sm:text-5xl font-semibold tracking-tight text-bone leading-tight">
+            Panel.
+          </h1>
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
+        <div className="flex gap-1 mb-10 p-1 bg-ink-soft border border-line-soft rounded-xl w-fit">
           {[
-            { id: 'dashboard' as const, label: 'Dashboard', icon: <BarChart3 size={16} /> },
-            { id: 'talleres' as const, label: 'Talleres', icon: <Wrench size={16} /> },
-            { id: 'resenas' as const, label: 'Reseñas', icon: <Star size={16} /> },
+            { id: 'dashboard' as const, label: 'Dashboard' },
+            { id: 'talleres' as const, label: 'Talleres' },
+            { id: 'resenas' as const, label: 'Reseñas' },
           ].map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm transition-all whitespace-nowrap ${
+              className={`px-5 py-2 rounded-lg text-sm font-medium transition-all ${
                 activeTab === tab.id
-                  ? 'bg-[#FF6B00] text-white'
-                  : 'bg-[#1F1F1F] text-gray-400 hover:text-white hover:bg-[#2a2a2a]'
+                  ? 'bg-ink text-bone'
+                  : 'text-smoke hover:text-bone'
               }`}
             >
-              {tab.icon}
               {tab.label}
             </button>
           ))}
         </div>
 
-        {/* Dashboard Tab */}
+        {/* Dashboard */}
         {activeTab === 'dashboard' && (
-          <div className="space-y-8">
-            {/* Stats cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              <StatCard
-                icon={<Wrench size={24} />}
-                label="Total Talleres"
-                value={totalTalleres.toString()}
-                color="text-[#FF6B00]"
-                bgColor="bg-[#FF6B00]/10"
-              />
-              <StatCard
-                icon={<CheckCircle size={24} />}
-                label="Verificados"
-                value={talleresVerificados.toString()}
-                color="text-[#2E7D32]"
-                bgColor="bg-[#2E7D32]/10"
-              />
-              <StatCard
-                icon={<AlertCircle size={24} />}
-                label="Pendientes"
-                value={talleresPendientes.toString()}
-                color="text-[#FFD700]"
-                bgColor="bg-[#FFD700]/10"
-              />
-              <StatCard
-                icon={<Star size={24} />}
-                label="Calificación Prom."
-                value={promedioCalificacion}
-                color="text-[#FFD700]"
-                bgColor="bg-[#FFD700]/10"
-              />
+          <div className="space-y-10">
+            {/* Stats */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-line-soft border border-line-soft rounded-2xl overflow-hidden">
+              <StatCard label="Talleres" value={totalTalleres.toString()} />
+              <StatCard label="Verificados" value={talleresVerificados.toString()} accent="success" />
+              <StatCard label="Pendientes" value={talleresPendientes.toString()} accent="ember" />
+              <StatCard label="Calificación" value={promedioCalificacion} accent="ember" />
             </div>
 
-            {/* Charts placeholder */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <div className="bg-[#1F1F1F] rounded-2xl p-6 border border-white/10">
-                <h3 className="text-white font-bold mb-4">Registro de Talleres (últimos 6 meses)</h3>
-                <div className="h-48 flex items-end justify-between gap-2 px-4">
-                  {[3, 5, 8, 12, 15, totalTalleres].map((val, i) => (
-                    <div key={i} className="flex-1 flex flex-col items-center gap-2">
-                      <div
-                        className="w-full bg-gradient-to-t from-[#FF6B00] to-[#FF8C38] rounded-t-lg transition-all duration-500"
-                        style={{ height: `${(val / totalTalleres) * 100}%` }}
-                      />
-                      <span className="text-gray-500 text-xs">
-                        {['Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][i]}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="bg-[#1F1F1F] rounded-2xl p-6 border border-white/10">
-                <h3 className="text-white font-bold mb-4">Reseñas por Mes</h3>
-                <div className="h-48 flex items-end justify-between gap-2 px-4">
-                  {[5, 8, 12, 15, 18, totalResenas].map((val, i) => (
-                    <div key={i} className="flex-1 flex flex-col items-center gap-2">
-                      <div
-                        className="w-full bg-gradient-to-t from-[#D32F2F] to-[#E53935] rounded-t-lg transition-all duration-500"
-                        style={{ height: `${(val / totalResenas) * 100}%` }}
-                      />
-                      <span className="text-gray-500 text-xs">
-                        {['Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][i]}
-                      </span>
-                    </div>
-                  ))}
-                </div>
+            {/* Chart */}
+            <div className="bg-ink-soft rounded-2xl border border-line-soft p-8">
+              <h3 className="text-bone font-display font-semibold mb-8">Registros mensuales</h3>
+              <div className="h-48 flex items-end justify-between gap-3">
+                {[3, 5, 8, 12, 15, totalTalleres].map((val, i) => (
+                  <div key={i} className="flex-1 flex flex-col items-center gap-3">
+                    <div
+                      className="w-full bg-ember/20 hover:bg-ember/40 rounded-t transition-colors"
+                      style={{ height: `${(val / totalTalleres) * 100}%` }}
+                    />
+                    <span className="text-xs text-smoke">
+                      {['Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'][i]}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Recent activity */}
-            <div className="bg-[#1F1F1F] rounded-2xl p-6 border border-white/10">
-              <h3 className="text-white font-bold mb-4">Actividad Reciente</h3>
-              <div className="space-y-3">
-                {talleres.slice(0, 5).map((taller, i) => (
-                  <div key={taller.id} className="flex items-center gap-4 p-3 bg-[#0A0A0A] rounded-xl">
-                    <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      taller.verificado ? 'bg-[#2E7D32]/10' : 'bg-[#FFD700]/10'
+            {/* Recent */}
+            <div className="bg-ink-soft rounded-2xl border border-line-soft overflow-hidden">
+              <div className="p-6 border-b border-line-soft">
+                <h3 className="text-bone font-display font-semibold">Actividad reciente</h3>
+              </div>
+              <div className="divide-y divide-line-soft">
+                {talleres.slice(0, 5).map((taller) => (
+                  <div key={taller.id} className="flex items-center gap-4 p-5 hover:bg-ink transition-colors">
+                    <div className="w-9 h-9 rounded-lg bg-ember-glow-strong border border-ember/20 flex items-center justify-center text-ember font-semibold text-sm">
+                      {taller.nombre.charAt(0)}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-bone text-sm font-medium truncate">{taller.nombre}</p>
+                      <p className="text-smoke text-xs">{taller.distrito}</p>
+                    </div>
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${
+                      taller.verificado
+                        ? 'bg-success/10 text-success'
+                        : 'bg-ember/10 text-ember'
                     }`}>
-                      {taller.verificado ? (
-                        <CheckCircle size={16} className="text-[#2E7D32]" />
-                      ) : (
-                        <AlertCircle size={16} className="text-[#FFD700]" />
-                      )}
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-white text-sm font-medium">{taller.nombre}</p>
-                      <p className="text-gray-500 text-xs">
-                        {taller.verificado ? 'Taller verificado y activo' : 'Pendiente de verificación'}
-                      </p>
-                    </div>
-                    <span className="text-gray-600 text-xs">{taller.distrito}</span>
+                      {taller.verificado ? 'Activo' : 'Pendiente'}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -151,64 +106,51 @@ const AdminPage: React.FC = () => {
           </div>
         )}
 
-        {/* Talleres Tab */}
+        {/* Talleres */}
         {activeTab === 'talleres' && (
-          <div className="bg-[#1F1F1F] rounded-2xl border border-white/10 overflow-hidden">
-            <div className="p-6 border-b border-white/10">
-              <h3 className="text-white font-bold">Lista de Talleres Registrados</h3>
-            </div>
+          <div className="bg-ink-soft rounded-2xl border border-line-soft overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr className="border-b border-white/10">
-                    <th className="text-left px-6 py-4 text-gray-400 text-sm font-medium">Taller</th>
-                    <th className="text-left px-6 py-4 text-gray-400 text-sm font-medium">RUC</th>
-                    <th className="text-left px-6 py-4 text-gray-400 text-sm font-medium">Distrito</th>
-                    <th className="text-left px-6 py-4 text-gray-400 text-sm font-medium">Calificación</th>
-                    <th className="text-left px-6 py-4 text-gray-400 text-sm font-medium">Estado</th>
-                    <th className="text-left px-6 py-4 text-gray-400 text-sm font-medium">Acciones</th>
+                  <tr className="border-b border-line-soft">
+                    <th className="text-left px-6 py-4 text-xs text-smoke uppercase tracking-wider font-medium">Taller</th>
+                    <th className="text-left px-6 py-4 text-xs text-smoke uppercase tracking-wider font-medium">RUC</th>
+                    <th className="text-left px-6 py-4 text-xs text-smoke uppercase tracking-wider font-medium">Ubicación</th>
+                    <th className="text-left px-6 py-4 text-xs text-smoke uppercase tracking-wider font-medium">Rating</th>
+                    <th className="text-left px-6 py-4 text-xs text-smoke uppercase tracking-wider font-medium">Estado</th>
+                    <th className="text-left px-6 py-4 text-xs text-smoke uppercase tracking-wider font-medium"></th>
                   </tr>
                 </thead>
-                <tbody>
+                <tbody className="divide-y divide-line-soft">
                   {talleres.map((taller) => (
-                    <tr key={taller.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
+                    <tr key={taller.id} className="hover:bg-ink transition-colors">
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#FF6B00] to-[#D32F2F] flex items-center justify-center text-white text-xs font-bold">
+                          <div className="w-8 h-8 rounded-lg bg-ember-glow-strong border border-ember/20 flex items-center justify-center text-ember text-xs font-semibold">
                             {taller.nombre.charAt(0)}
                           </div>
-                          <span className="text-white text-sm font-medium">{taller.nombre}</span>
+                          <span className="text-bone text-sm font-medium">{taller.nombre}</span>
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-gray-400 text-sm font-mono">{taller.ruc}</td>
-                      <td className="px-6 py-4 text-gray-400 text-sm">{taller.distrito}</td>
+                      <td className="px-6 py-4 text-smoke text-sm font-mono">{taller.ruc}</td>
+                      <td className="px-6 py-4 text-smoke text-sm">{taller.distrito}</td>
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-1">
-                          <Star size={14} className="text-[#FFD700] fill-[#FFD700]" />
-                          <span className="text-white text-sm">{taller.calificacion}</span>
-                          <span className="text-gray-500 text-xs">({taller.numResenas})</span>
+                          <Star size={12} className="text-ember fill-ember" />
+                          <span className="text-bone text-sm">{taller.calificacion}</span>
                         </div>
                       </td>
                       <td className="px-6 py-4">
-                        <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
-                          taller.verificado
-                            ? 'bg-[#2E7D32]/10 text-[#2E7D32]'
-                            : 'bg-[#FFD700]/10 text-[#FFD700]'
+                        <span className={`text-xs px-2 py-0.5 rounded-full ${
+                          taller.verificado ? 'bg-success/10 text-success' : 'bg-ember/10 text-ember'
                         }`}>
-                          {taller.verificado ? '✓ Verificado' : '⏳ Pendiente'}
+                          {taller.verificado ? 'Verificado' : 'Pendiente'}
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="flex items-center gap-2">
-                          <button className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-colors" title="Ver perfil">
-                            <Eye size={14} />
-                          </button>
-                          {!taller.verificado && (
-                            <button className="p-2 rounded-lg bg-[#2E7D32]/10 text-[#2E7D32] hover:bg-[#2E7D32]/20 transition-colors" title="Aprobar">
-                              <CheckCircle size={14} />
-                            </button>
-                          )}
-                        </div>
+                        <button className="p-2 rounded-lg text-smoke hover:text-bone hover:bg-ink transition-colors">
+                          <Eye size={14} />
+                        </button>
                       </td>
                     </tr>
                   ))}
@@ -218,45 +160,37 @@ const AdminPage: React.FC = () => {
           </div>
         )}
 
-        {/* Reseñas Tab */}
+        {/* Reseñas */}
         {activeTab === 'resenas' && (
-          <div className="space-y-4">
-            <div className="bg-[#1F1F1F] rounded-2xl p-6 border border-white/10 mb-4">
-              <h3 className="text-white font-bold">Moderación de Reseñas</h3>
-              <p className="text-gray-500 text-sm mt-1">Revisa y modera las reseñas de los usuarios</p>
-            </div>
-
+          <div className="space-y-3">
             {resenas.map((resena) => {
               const taller = talleres.find(t => t.id === resena.tallerId);
               return (
-                <div key={resena.id} className="bg-[#1F1F1F] rounded-2xl p-6 border border-white/10">
-                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                <div key={resena.id} className="bg-ink-soft rounded-2xl border border-line-soft p-6">
+                  <div className="flex flex-col sm:flex-row sm:items-start gap-4">
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#FF6B00] to-[#D32F2F] flex items-center justify-center text-white text-xs font-bold">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-8 h-8 rounded-full bg-ember-glow-strong border border-ember/20 flex items-center justify-center text-ember text-xs font-semibold">
                           {resena.clienteNombre.charAt(0)}
                         </div>
                         <div>
-                          <p className="text-white text-sm font-medium">{resena.clienteNombre}</p>
-                          <p className="text-gray-500 text-xs">{new Date(resena.fecha).toLocaleDateString('es-PE')} • {taller?.nombre}</p>
+                          <p className="text-bone text-sm font-medium">{resena.clienteNombre}</p>
+                          <p className="text-smoke text-xs">{taller?.nombre} · {new Date(resena.fecha).toLocaleDateString('es-PE', { month: 'short', year: 'numeric' })}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1 mb-2">
+                      <div className="flex items-center gap-0.5 mb-2">
                         {[...Array(resena.calificacion)].map((_, i) => (
-                          <Star key={i} size={14} className="text-[#FFD700] fill-[#FFD700]" />
+                          <Star key={i} size={12} className="text-ember fill-ember" />
                         ))}
                       </div>
-                      <p className="text-gray-400 text-sm">{resena.comentario}</p>
-                      <span className="inline-block mt-2 px-2 py-0.5 bg-[#FF6B00]/10 text-[#FF6B00] text-xs rounded">
-                        {resena.servicio}
-                      </span>
+                      <p className="text-ash text-sm leading-relaxed">{resena.comentario}</p>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <button className="p-2 rounded-lg bg-[#2E7D32]/10 text-[#2E7D32] hover:bg-[#2E7D32]/20 transition-colors" title="Aprobar">
-                        <CheckCircle size={16} />
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <button className="p-2 rounded-lg bg-success/10 text-success hover:bg-success/20 transition-colors">
+                        <Check size={14} />
                       </button>
-                      <button className="p-2 rounded-lg bg-[#D32F2F]/10 text-[#D32F2F] hover:bg-[#D32F2F]/20 transition-colors" title="Rechazar">
-                        <XCircle size={16} />
+                      <button className="p-2 rounded-lg bg-danger/10 text-danger hover:bg-danger/20 transition-colors">
+                        <X size={14} />
                       </button>
                     </div>
                   </div>
@@ -270,22 +204,20 @@ const AdminPage: React.FC = () => {
   );
 };
 
-// Stat Card Component
 interface StatCardProps {
-  icon: React.ReactNode;
   label: string;
   value: string;
-  color: string;
-  bgColor: string;
+  accent?: 'ember' | 'success';
 }
 
-const StatCard: React.FC<StatCardProps> = ({ icon, label, value, color, bgColor }) => (
-  <div className="bg-[#1F1F1F] rounded-2xl p-6 border border-white/10">
-    <div className={`w-12 h-12 rounded-xl ${bgColor} flex items-center justify-center ${color} mb-4`}>
-      {icon}
-    </div>
-    <p className="text-gray-400 text-sm mb-1">{label}</p>
-    <p className="text-white font-heading text-2xl font-black">{value}</p>
+const StatCard: React.FC<StatCardProps> = ({ label, value, accent }) => (
+  <div className="bg-ink p-6">
+    <p className="text-xs text-smoke uppercase tracking-wider mb-3">{label}</p>
+    <p className={`font-display text-3xl font-semibold tracking-tight ${
+      accent === 'ember' ? 'text-ember' : accent === 'success' ? 'text-success' : 'text-bone'
+    }`}>
+      {value}
+    </p>
   </div>
 );
 
