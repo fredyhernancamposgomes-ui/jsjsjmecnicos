@@ -185,9 +185,117 @@ body {
 /* Mesh gradient */
 .mesh-gradient {
   background: 
-    radial-gradient(at 20% 30%, rgba(255, 107, 26, 0.15) 0px, transparent 50%),
-    radial-gradient(at 80% 70%, rgba(220, 38, 38, 0.1) 0px, transparent 50%),
-    radial-gradient(at 50% 50%, rgba(255, 69, 0, 0.08) 0px, transparent 50%);
+    radial-gradient(at 20% 30%, rgba(255, 107, 26, 0.12) 0px, transparent 50%),
+    radial-gradient(at 80% 70%, rgba(220, 38, 38, 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(255, 69, 0, 0.06) 0px, transparent 50%);
+}
+
+/* Section number watermark */
+.section-number {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 15rem;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  user-select: none;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .section-number {
+    font-size: 8rem;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+
+/* Premium card hover */
+.card-premium {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-premium:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 107, 26, 0.5);
+  box-shadow: 0 20px 40px -10px rgba(255, 107, 26, 0.15);
+}
+
+/* Button premium */
+.btn-premium {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-premium:hover {
+  transform: scale(1.02);
+}
+
+.btn-premium:active {
+  transform: scale(0.98);
+}
+
+/* Underline animation */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #FF6B1A;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.link-underline:hover::after {
+  width: 100%;
+}
+
+/* Glow effects */
+.glow-sm {
+  box-shadow: 0 0 20px rgba(255, 107, 26, 0.2);
+}
+
+.glow-md {
+  box-shadow: 0 0 40px rgba(255, 107, 26, 0.3);
+}
+
+.glow-lg {
+  box-shadow: 0 0 60px rgba(255, 107, 26, 0.4);
+}
+
+/* Asymmetric grid */
+.grid-asymmetric {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.5rem;
+}
+
+.grid-asymmetric .card-large {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+.grid-asymmetric .card-small {
+  grid-column: span 2;
+}
+
+@media (max-width: 1024px) {
+  .grid-asymmetric {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-asymmetric .card-large,
+  .grid-asymmetric .card-small {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
 }
 
 /* Glassmorphism */
