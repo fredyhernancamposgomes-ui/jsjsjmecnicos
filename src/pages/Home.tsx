@@ -71,19 +71,19 @@ const HeroSection: React.FC = () => {
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center py-32">
         {/* Badge */}
         <ScrollReveal delay={0.2}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-bone/5 backdrop-blur-md border border-bone/10 rounded-full mb-12">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-ember opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-ember"></span>
             </span>
-            <span className="text-sm text-white/90 font-medium">
+            <span className="text-sm text-bone/90 font-medium">
               +500 talleres verificados en Perú
             </span>
           </div>
         </ScrollReveal>
 
         {/* Headline - 2 líneas máximo */}
-        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.1] text-white mb-8">
+        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.1] text-bone mb-8">
           <WordReveal delay={0.3}>Llegamos hasta donde</WordReveal>
           <br />
           <span className="text-ember">
@@ -93,7 +93,7 @@ const HeroSection: React.FC = () => {
 
         {/* Subtitle */}
         <ScrollReveal delay={0.7}>
-          <p className="text-lg sm:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed mb-12">
+          <p className="text-lg sm:text-xl text-ash max-w-2xl mx-auto leading-relaxed mb-12">
             La plataforma que conecta clientes con talleres de confianza y talleres con proveedores de repuestos.
           </p>
         </ScrollReveal>
@@ -104,7 +104,7 @@ const HeroSection: React.FC = () => {
             <select
               value={ubicacion}
               onChange={(e) => setUbicacion(e.target.value)}
-              className="flex-1 px-5 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl text-white focus:outline-none focus:border-ember transition-colors"
+              className="flex-1 px-5 py-4 bg-bone/5 backdrop-blur-md border border-bone/10 rounded-xl text-bone focus:outline-none focus:border-ember transition-colors"
             >
               <option value="">Ubicación</option>
               {departamentos.map(d => (
@@ -115,7 +115,7 @@ const HeroSection: React.FC = () => {
             <select
               value={servicio}
               onChange={(e) => setServicio(e.target.value)}
-              className="flex-1 px-5 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl text-white focus:outline-none focus:border-ember transition-colors"
+              className="flex-1 px-5 py-4 bg-bone/5 backdrop-blur-md border border-bone/10 rounded-xl text-bone focus:outline-none focus:border-ember transition-colors"
             >
               <option value="">Servicio</option>
               {SERVICIOS.map(s => (
@@ -125,7 +125,7 @@ const HeroSection: React.FC = () => {
 
             <button
               type="submit"
-              className="px-8 py-4 bg-ember text-white font-semibold rounded-xl hover:bg-ember-hot transition-colors btn-hover"
+              className="px-8 py-4 bg-ember text-bone font-semibold rounded-xl hover:bg-ember-hot transition-colors btn-hover"
             >
               Buscar
             </button>
@@ -155,7 +155,7 @@ const ManifestoSection: React.FC = () => {
           Nuestro manifiesto
         </p>
         
-        <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight text-white">
+        <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight text-bone">
           <WordReveal delay={0.3}>No somos un taller.</WordReveal>
           <br />
           <WordReveal delay={0.6}>Somos el puente entre</WordReveal>
@@ -189,17 +189,17 @@ const AuxilioSection: React.FC = () => {
       <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 py-32">
         {/* Badge */}
         <ScrollReveal delay={0.2}>
-          <div className="inline-flex items-center gap-3 px-5 py-3 bg-white/5 backdrop-blur-md border-2 border-ember rounded-full mb-10">
+          <div className="inline-flex items-center gap-3 px-5 py-3 bg-bone/5 backdrop-blur-md border-2 border-ember rounded-full mb-10">
             <div className="relative">
               <span className="absolute inset-0 rounded-full bg-ember animate-ping opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-ember"></span>
             </div>
-            <span className="text-white font-bold">DISPONIBLE 24/7</span>
+            <span className="text-bone font-bold">DISPONIBLE 24/7</span>
           </div>
         </ScrollReveal>
 
         {/* Headline */}
-        <h2 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.1] text-white mb-8">
+        <h2 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.1] text-bone mb-8">
           <WordReveal delay={0.3}>Auxilio mecánico</WordReveal>
           <br />
           <span className="text-ember">
@@ -209,8 +209,8 @@ const AuxilioSection: React.FC = () => {
 
         {/* Subtitle */}
         <ScrollReveal delay={0.7}>
-          <p className="text-xl sm:text-2xl text-white/80 max-w-2xl leading-relaxed mb-12">
-            Se te averió el auto en la carretera a las 3am? <span className="text-white font-semibold">Llegamos en 30 minutos.</span>
+          <p className="text-xl sm:text-2xl text-ash max-w-2xl leading-relaxed mb-12">
+            Se te averió el auto en la carretera a las 3am? <span className="text-bone font-semibold">Llegamos en 30 minutos.</span>
           </p>
         </ScrollReveal>
 
@@ -220,7 +220,7 @@ const AuxilioSection: React.FC = () => {
             href="https://wa.me/51999999999?text=Necesito auxilio mecánico urgente"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-ember text-white font-bold text-lg rounded-xl hover:bg-ember-hot transition-colors btn-hover"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-ember text-bone font-bold text-lg rounded-xl hover:bg-ember-hot transition-colors btn-hover"
           >
             <MessageCircle size={20} />
             Solicitar auxilio ahora
@@ -246,23 +246,23 @@ const StatsSection: React.FC = () => {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
           <div className="text-center">
-            <div className="font-display text-5xl sm:text-6xl font-bold tracking-tight text-white mb-3">
+            <div className="font-display text-5xl sm:text-6xl font-bold tracking-tight text-bone mb-3">
               {talleresCount}<span className="text-ember">+</span>
             </div>
-            <p className="text-white/60 text-base">Talleres verificados</p>
+            <p className="text-ash text-base">Talleres verificados</p>
           </div>
           <div className="text-center">
-            <div className="font-display text-5xl sm:text-6xl font-bold tracking-tight text-white mb-3">
+            <div className="font-display text-5xl sm:text-6xl font-bold tracking-tight text-bone mb-3">
               {clientesCount}<span className="text-ember">K+</span>
             </div>
-            <p className="text-white/60 text-base">Clientes satisfechos</p>
+            <p className="text-ash text-base">Clientes satisfechos</p>
           </div>
           <div className="text-center">
             <div className="font-display text-5xl sm:text-6xl font-bold tracking-tight leading-none mb-3">
-              <span className="text-white">{(ratingCount / 10).toFixed(1)}</span>
+              <span className="text-bone">{(ratingCount / 10).toFixed(1)}</span>
               <span className="text-ember">★</span>
             </div>
-            <p className="text-white/60 text-base">Calificación promedio</p>
+            <p className="text-ash text-base">Calificación promedio</p>
           </div>
         </div>
       </div>
@@ -282,7 +282,7 @@ const ServicesSection: React.FC = () => {
         <ScrollReveal>
           <div className="text-center mb-20">
             <p className="text-sm text-ember uppercase tracking-widest font-semibold mb-4">Servicios</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white">
+            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-bone">
               Todo lo que tu auto necesita.
             </h2>
           </div>
@@ -291,11 +291,11 @@ const ServicesSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((servicio, i) => (
             <ScrollReveal key={servicio} delay={i * 0.1}>
-              <div className="group p-8 bg-ink-soft rounded-2xl border border-white/5 hover:border-ember/30 transition-all card-hover">
-                <h3 className="font-display text-2xl font-semibold text-white mb-3 group-hover:text-ember transition-colors">
+              <div className="group p-8 bg-ink-soft rounded-2xl border border-bone/5 hover:border-ember/30 transition-all card-hover">
+                <h3 className="font-display text-2xl font-semibold text-bone mb-3 group-hover:text-ember transition-colors">
                   {servicio}
                 </h3>
-                <p className="text-white/60">
+                <p className="text-ash">
                   Servicio profesional con garantía y técnicos certificados.
                 </p>
               </div>
@@ -328,16 +328,16 @@ const FeaturedTalleres: React.FC = () => {
           <ScrollReveal>
             <div>
               <p className="text-sm text-ember uppercase tracking-widest font-semibold mb-4">Destacados</p>
-              <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white">
+              <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-bone">
                 Los mejor calificados.
               </h2>
             </div>
           </ScrollReveal>
           <div className="flex gap-2">
-            <button onClick={() => scroll('left')} className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-white/60 hover:text-white hover:border-white/30 transition-colors">
+            <button onClick={() => scroll('left')} className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-ash hover:text-bone hover:border-bone/30 transition-colors">
               <ChevronLeft size={20} />
             </button>
-            <button onClick={() => scroll('right')} className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-white/60 hover:text-white hover:border-white/30 transition-colors">
+            <button onClick={() => scroll('right')} className="w-12 h-12 rounded-full border border-line flex items-center justify-center text-ash hover:text-bone hover:border-bone/30 transition-colors">
               <ChevronRight size={20} />
             </button>
           </div>
@@ -350,24 +350,24 @@ const FeaturedTalleres: React.FC = () => {
           <Link
             key={taller.id}
             to={`/taller/${taller.id}`}
-            className="flex-shrink-0 w-[360px] bg-ink rounded-2xl border border-white/5 overflow-hidden group card-hover"
+            className="flex-shrink-0 w-[360px] bg-ink rounded-2xl border border-bone/5 overflow-hidden group card-hover"
           >
             <div className="h-56 relative overflow-hidden">
               <img src={IMG.workshop} alt={taller.nombre} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-ink to-transparent" />
               <div className="absolute top-4 right-4 flex items-center gap-1 px-3 py-1.5 bg-black/50 backdrop-blur-md rounded-full">
                 <Star size={14} className="text-ember fill-ember" />
-                <span className="text-white text-sm font-bold">{taller.calificacion}</span>
+                <span className="text-bone text-sm font-bold">{taller.calificacion}</span>
               </div>
             </div>
             <div className="p-6">
-              <h3 className="font-display text-xl font-semibold text-white group-hover:text-ember transition-colors mb-2">
+              <h3 className="font-display text-xl font-semibold text-bone group-hover:text-ember transition-colors mb-2">
                 {taller.nombre}
               </h3>
-              <p className="text-white/60 text-sm mb-4">{taller.distrito}</p>
+              <p className="text-ash text-sm mb-4">{taller.distrito}</p>
               <div className="flex items-center justify-between pt-4 border-t border-line">
-                <span className="text-white/60 text-sm">{taller.numResenas} reseñas</span>
-                <ArrowRight size={16} className="text-white/60 group-hover:text-ember transition-colors" />
+                <span className="text-ash text-sm">{taller.numResenas} reseñas</span>
+                <ArrowRight size={16} className="text-ash group-hover:text-ember transition-colors" />
               </div>
             </div>
           </Link>
@@ -399,7 +399,7 @@ const TestimonialsSection: React.FC = () => {
         <ScrollReveal>
           <div className="text-center mb-20">
             <p className="text-sm text-ember uppercase tracking-widest font-semibold mb-4">Testimonios</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-white">
+            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-bone">
               Lo que dice la comunidad.
             </h2>
           </div>
@@ -411,7 +411,7 @@ const TestimonialsSection: React.FC = () => {
               <img src={photos[current]} alt={testimonios[current].nombre} className="w-full h-full object-cover" />
             </div>
             <div>
-              <p className="font-display text-2xl sm:text-3xl text-white leading-snug mb-8">
+              <p className="font-display text-2xl sm:text-3xl text-bone leading-snug mb-8">
                 "{testimonios[current].texto}"
               </p>
               <div className="flex items-center gap-4">
@@ -419,8 +419,8 @@ const TestimonialsSection: React.FC = () => {
                   {testimonios[current].nombre.charAt(0)}
                 </div>
                 <div>
-                  <p className="text-white font-semibold">{testimonios[current].nombre}</p>
-                  <p className="text-white/60 text-sm">{testimonios[current].rol}</p>
+                  <p className="text-bone font-semibold">{testimonios[current].nombre}</p>
+                  <p className="text-ash text-sm">{testimonios[current].rol}</p>
                 </div>
               </div>
             </div>
@@ -451,7 +451,7 @@ const FinalCTA: React.FC = () => {
     <section ref={ref} className="py-48 px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center">
         <h2
-          className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-8"
+          className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-bone mb-8"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -463,7 +463,7 @@ const FinalCTA: React.FC = () => {
           <span className="text-ember">empezar?</span>
         </h2>
         <p
-          className="text-lg text-white/70 max-w-2xl mx-auto mb-12"
+          className="text-lg text-ash max-w-2xl mx-auto mb-12"
           style={{
             opacity: isVisible ? 1 : 0,
             transition: 'opacity 0.8s ease 0.2s'
@@ -480,14 +480,14 @@ const FinalCTA: React.FC = () => {
         >
           <Link
             to="/buscar"
-            className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-ember text-white font-bold text-lg rounded-xl hover:bg-ember-hot transition-colors btn-hover"
+            className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-ember text-bone font-bold text-lg rounded-xl hover:bg-ember-hot transition-colors btn-hover"
           >
             Buscar taller
             <ArrowRight size={18} />
           </Link>
           <Link
             to="/registro"
-            className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold text-lg rounded-xl hover:bg-white/10 transition-colors btn-hover"
+            className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-bone/5 backdrop-blur-md border border-bone/20 text-bone font-bold text-lg rounded-xl hover:bg-bone/10 transition-colors btn-hover"
           >
             Soy taller
           </Link>
