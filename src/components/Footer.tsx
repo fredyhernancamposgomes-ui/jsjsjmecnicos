@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
             <p className="mt-5 text-sm text-smoke leading-relaxed max-w-xs">
               La plataforma que conecta clientes con talleres de confianza en todo el Perú.
             </p>
-            <p className="mt-4 text-sm text-ember italic font-display">
+            <p className="mt-4 text-sm text-ember font-display">
               "Llegamos hasta donde más lo necesites"
             </p>
           </div>
