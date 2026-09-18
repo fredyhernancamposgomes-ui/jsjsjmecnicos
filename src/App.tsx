@@ -6,7 +6,8 @@ import Home from './pages/Home';
 import SearchPage from './pages/Search';
 import TallerProfile from './pages/TallerProfile';
 import RegistroPage from './pages/Registro';
-import RepuestosPage from './pages/Repuestos';
+import TiendaPage from './pages/Tienda';
+import DashboardTaller from './pages/DashboardTaller';
 import AdminPage from './pages/Admin';
 
 // ============================================
@@ -16,7 +17,7 @@ import AdminPage from './pages/Admin';
 const App: React.FC = () => {
   return (
     <HashRouter>
-      <div className="min-h-screen bg-[#0A0A0A] text-white">
+      <div className="min-h-screen bg-ink text-bone">
         <Navbar />
         <main>
           <Routes>
@@ -24,7 +25,9 @@ const App: React.FC = () => {
             <Route path="/buscar" element={<SearchPage />} />
             <Route path="/taller/:id" element={<TallerProfile />} />
             <Route path="/registro" element={<RegistroPage />} />
-            <Route path="/repuestos" element={<RepuestosPage />} />
+            <Route path="/tienda" element={<TiendaPage />} />
+            <Route path="/repuestos" element={<TiendaPage />} />
+            <Route path="/dashboard" element={<DashboardTaller />} />
             <Route path="/admin" element={<AdminPage />} />
           </Routes>
         </main>
