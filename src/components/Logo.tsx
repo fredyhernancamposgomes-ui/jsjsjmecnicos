@@ -55,12 +55,11 @@ const Logo: React.FC<LogoProps> = ({
         <circle cx="16" cy="16" r="1.5" fill="#F97316" />
       </svg>
 
-      {showText && (
-        <span className={`font-display font-semibold tracking-tight ${s.text} ${textColor}`}>
-          Taller<span className="text-ember">Ya</span>
-        </span>
-      )}
-    </div>
+          {showText && (
+            <span className={`font-grotesk font-semibold tracking-tight ${s.text} ${textColor}`}>
+              Taller<span className="text-ember">Ya</span>
+            </span>
+          )}    </div>
   );
 };
 

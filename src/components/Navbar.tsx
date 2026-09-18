@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-4 py-2 rounded-lg text-sm font-grotesk font-medium tracking-tight transition-colors ${
                   isActive(link.to)
                     ? 'text-bone'
                     : 'text-smoke hover:text-bone'
