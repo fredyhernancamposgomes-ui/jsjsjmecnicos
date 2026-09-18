@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Star, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
 import { talleres, testimonios, SERVICIOS, departamentos } from '../data';
 import { useInView, useScrollProgress, useCountUp } from '../hooks/useAnimations';
 import { TextReveal, WordReveal, ParallaxImage, MagneticButton, ScrollReveal } from '../components/Animations';
@@ -31,6 +31,7 @@ const Home: React.FC = () => {
       
       <HeroSection />
       <ManifestoSection />
+      <AuxilioSection /> {/* CLÍMAX - Auxilio 24/7 */}
       <StatsSection />
       <BentoServices />
       <HowItWorks />
@@ -172,11 +173,11 @@ const ManifestoSection: React.FC = () => {
   const { ref, isVisible } = useInView(0.3);
 
   return (
-    <section ref={ref} className="py-48 px-6 lg:px-8 relative overflow-hidden">
+    <section ref={ref} className="py-64 px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-6xl">
           <p 
-            className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-10"
+            className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-12"
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -204,6 +205,110 @@ const ManifestoSection: React.FC = () => {
 };
 
 // ============================================
+// AUXILIO 24/7 - EL CLÍMAX
+// ============================================
+const AuxilioSection: React.FC = () => {
+  const { ref, isVisible } = useInView(0.3);
+  const [availableTechs, setAvailableTechs] = useState(3);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAvailableTechs(Math.floor(Math.random() * 3) + 2); // 2-4 técnicos
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background image cinematográfica */}
+      <div className="absolute inset-0">
+        <img
+          src="https://image.qwenlm.ai/generated-images/0ef27cd8-5895-4585-aa49-5a8b2b0b6ea8/_result.png"
+          alt="Auxilio mecánico 24/7"
+          className="w-full h-full object-cover"
+        />
+        {/* Overlay dramático */}
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/95 to-ink/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/80" />
+      </div>
+
+      {/* Mesh gradient overlay */}
+      <div className="absolute inset-0 mesh-gradient opacity-70" />
+
+      {/* Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-32 w-full">
+        <div className="max-w-4xl">
+          {/* Badge urgente */}
+          <ScrollReveal delay={0.2}>
+            <div className="inline-flex items-center gap-3 px-5 py-3 glass rounded-full mb-10 border-2 border-ember/30">
+              <div className="relative">
+                <span className="absolute inset-0 rounded-full bg-ember animate-ping opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-ember"></span>
+              </div>
+              <span className="text-sm text-bone font-semibold tracking-wide">
+                DISPONIBLE AHORA · {availableTechs} TÉCNICOS EN LÍNEA
+              </span>
+            </div>
+          </ScrollReveal>
+
+          {/* Headline masivo */}
+          <h2 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-[-0.03em] leading-[0.85] text-bone mb-8">
+            <WordReveal delay={0.3}>Auxilio</WordReveal>
+            <br />
+            <WordReveal delay={0.5}>mecánico</WordReveal>
+            <br />
+            <span className="text-gradient-ember italic">
+              <WordReveal delay={0.7}>24/7.</WordReveal>
+            </span>
+          </h2>
+
+          {/* Subtítulo dramático */}
+          <ScrollReveal delay={0.9}>
+            <p className="text-xl sm:text-2xl text-ash max-w-2xl leading-relaxed mb-12 font-body">
+              Se te averió el auto en la carretera a las 3am? <span className="text-bone font-semibold">Llegamos en 30 minutos o menos.</span> En cualquier punto del Perú.
+            </p>
+          </ScrollReveal>
+
+          {/* Stats en tiempo real */}
+          <ScrollReveal delay={1.1}>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+              <div className="glass rounded-2xl p-6 border border-ember/20">
+                <div className="font-display text-5xl font-normal text-ember mb-2">30min</div>
+                <p className="text-sm text-ash">Tiempo de respuesta promedio</p>
+              </div>
+              <div className="glass rounded-2xl p-6 border border-ember/20">
+                <div className="font-display text-5xl font-normal text-ember mb-2">24/7</div>
+                <p className="text-sm text-ash">Disponibilidad total</p>
+              </div>
+              <div className="glass rounded-2xl p-6 border border-ember/20">
+                <div className="font-display text-5xl font-normal text-ember mb-2">100%</div>
+                <p className="text-sm text-ash">Cobertura nacional</p>
+              </div>
+            </div>
+          </ScrollReveal>
+
+          {/* CTA gigante */}
+          <ScrollReveal delay={1.3}>
+            <MagneticButton>
+              <a
+                href="https://wa.me/51999999999?text=¡Necesito auxilio mecánico urgente!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-4 px-12 py-6 bg-ember text-ink font-bold text-xl rounded-2xl hover:bg-ember-hot transition-all glow-on-hover group shadow-2xl shadow-ember/30"
+              >
+                <MessageCircle size={24} />
+                SOLICITAR AUXILIO AHORA
+                <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
+              </a>
+            </MagneticButton>
+          </ScrollReveal>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ============================================
 // STATS - Números gigantes
 // ============================================
 const StatsSection: React.FC = () => {
@@ -213,29 +318,29 @@ const StatsSection: React.FC = () => {
   const rating = useCountUp(48, 1800, isVisible);
 
   return (
-    <section ref={ref} className="py-40 px-6 lg:px-8 border-y border-line-soft relative overflow-hidden">
-      {/* Glow background */}
-      <div className="absolute inset-0 mesh-gradient opacity-60" />
+    <section ref={ref} className="py-56 px-6 lg:px-8 border-y border-line-soft relative overflow-hidden">
+      {/* Glow background más intenso */}
+      <div className="absolute inset-0 mesh-gradient opacity-80" />
       
       <div className="max-w-7xl mx-auto relative">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-20 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-24 md:gap-16">
           <div className="text-center md:text-left">
             <div className="font-display text-8xl sm:text-9xl font-normal tracking-tighter text-bone leading-none">
               {talleres}<span className="text-ember-hot">+</span>
             </div>
-            <p className="text-sm text-smoke uppercase tracking-widest font-grotesk mt-6">Talleres verificados</p>
+            <p className="text-sm text-ember uppercase tracking-widest font-grotesk mt-8 font-semibold">Talleres verificados</p>
           </div>
           <div className="text-center md:text-left md:border-x border-line-soft px-8">
             <div className="font-display text-8xl sm:text-9xl font-normal tracking-tighter text-bone leading-none">
               {clientes}<span className="text-ember-hot">K+</span>
             </div>
-            <p className="text-sm text-smoke uppercase tracking-widest font-grotesk mt-6">Clientes satisfechos</p>
+            <p className="text-sm text-ember uppercase tracking-widest font-grotesk mt-8 font-semibold">Clientes satisfechos</p>
           </div>
           <div className="text-center md:text-left">
             <div className="font-display text-8xl sm:text-9xl font-normal tracking-tighter leading-none">
               <span className="text-bone">{(rating / 10).toFixed(1)}</span><span className="text-ember-hot">★</span>
             </div>
-            <p className="text-sm text-smoke uppercase tracking-widest font-grotesk mt-6">Calificación promedio</p>
+            <p className="text-sm text-ember uppercase tracking-widest font-grotesk mt-8 font-semibold">Calificación promedio</p>
           </div>
         </div>
       </div>
@@ -248,11 +353,11 @@ const StatsSection: React.FC = () => {
 // ============================================
 const BentoServices: React.FC = () => {
   return (
-    <section className="py-48 px-6 lg:px-8">
+    <section className="py-64 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
-          <div className="max-w-3xl mb-20">
-            <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-5">Servicios</p>
+          <div className="max-w-3xl mb-24">
+            <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-6">Servicios</p>
             <h2 className="font-display text-5xl sm:text-6xl md:text-7xl font-normal tracking-[-0.02em] leading-[0.9] text-bone">
               Todo lo que tu auto
               <span className="italic text-gradient-ember"> necesita.</span>
@@ -261,7 +366,7 @@ const BentoServices: React.FC = () => {
         </ScrollReveal>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-3 auto-rows-[200px] md:auto-rows-[260px]">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-4 auto-rows-[220px] md:auto-rows-[280px]">
           {/* Card grande */}
           <ScrollReveal delay={0.1} className="md:col-span-4 md:row-span-2">
             <div className="relative h-full rounded-3xl overflow-hidden group card-shine">
@@ -357,11 +462,11 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section className="py-48 px-6 lg:px-8 bg-ink-soft border-y border-line-soft">
+    <section className="py-64 px-6 lg:px-8 bg-ink-soft border-y border-line-soft">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
-          <div className="max-w-3xl mb-24">
-            <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-5">Cómo funciona</p>
+          <div className="max-w-3xl mb-32">
+            <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-6">Cómo funciona</p>
             <h2 className="font-display text-5xl sm:text-6xl md:text-7xl font-normal tracking-[-0.02em] leading-[0.9] text-bone">
               Tres pasos.
               <br />
@@ -426,12 +531,12 @@ const FeaturedTalleres: React.FC = () => {
   };
 
   return (
-    <section className="py-48 px-6 lg:px-8">
+    <section className="py-64 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-end justify-between mb-16 flex-wrap gap-6">
+        <div className="flex items-end justify-between mb-20 flex-wrap gap-6">
           <ScrollReveal>
             <div>
-              <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-5">Destacados</p>
+              <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-6">Destacados</p>
               <h2 className="font-display text-5xl sm:text-6xl font-normal tracking-[-0.02em] text-bone">
                 Los mejor <span className="italic text-gradient-ember">calificados.</span>
               </h2>
@@ -504,11 +609,11 @@ const TestimonialsSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-48 px-6 lg:px-8 bg-ink-soft border-y border-line-soft">
+    <section className="py-64 px-6 lg:px-8 bg-ink-soft border-y border-line-soft">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
-          <div className="text-center mb-20">
-            <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-5">Testimonios</p>
+          <div className="text-center mb-24">
+            <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-6">Testimonios</p>
             <h2 className="font-display text-5xl sm:text-6xl font-normal tracking-[-0.02em] text-bone">
               Lo que dice la <span className="italic text-gradient-ember">comunidad.</span>
             </h2>
@@ -571,16 +676,17 @@ const FinalCTA: React.FC = () => {
   const { ref, isVisible } = useInView(0.3);
 
   return (
-    <section ref={ref} className="py-56 px-6 lg:px-8 relative overflow-hidden">
-      {/* Dramatic background */}
+    <section ref={ref} className="py-72 px-6 lg:px-8 relative overflow-hidden">
+      {/* Dramatic background más intenso */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 mesh-gradient opacity-80" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-ember/5 rounded-full blur-3xl" />
+        <div className="absolute inset-0 mesh-gradient opacity-90" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] bg-ember/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-ember/50 to-transparent" />
       </div>
       
       <div className="max-w-5xl mx-auto text-center relative">
         <h2
-          className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-[-0.03em] leading-[0.85] text-bone mb-12"
+          className="font-display text-7xl sm:text-8xl md:text-9xl font-normal tracking-[-0.03em] leading-[0.85] text-bone mb-16"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.95)',
@@ -592,7 +698,7 @@ const FinalCTA: React.FC = () => {
           <span className="text-gradient-ember italic">empezar?</span>
         </h2>
         <p
-          className="text-lg text-ash max-w-xl mx-auto mb-16"
+          className="text-xl text-ash max-w-2xl mx-auto mb-20"
           style={{
             opacity: isVisible ? 1 : 0,
             transition: 'opacity 1s ease 0.3s'
@@ -601,7 +707,7 @@ const FinalCTA: React.FC = () => {
           Únete a la comunidad automotriz más grande del Perú.
         </p>
         <div
-          className="flex flex-col sm:flex-row gap-5 justify-center"
+          className="flex flex-col sm:flex-row gap-6 justify-center"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -611,16 +717,16 @@ const FinalCTA: React.FC = () => {
           <MagneticButton>
             <Link
               to="/buscar"
-              className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-ember text-ink font-bold rounded-2xl hover:bg-ember-hot transition-all glow-on-hover group text-lg"
+              className="inline-flex items-center justify-center gap-3 px-12 py-6 bg-ember text-ink font-bold rounded-2xl hover:bg-ember-hot transition-all glow-on-hover group text-xl shadow-2xl shadow-ember/40"
             >
               Buscar taller
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </MagneticButton>
           <MagneticButton>
             <Link
               to="/registro"
-              className="inline-flex items-center justify-center gap-2 px-10 py-5 border-2 border-ember/50 text-ember font-bold rounded-2xl hover:border-ember hover:bg-ember/10 transition-all text-lg"
+              className="inline-flex items-center justify-center gap-3 px-12 py-6 border-2 border-ember text-ember font-bold rounded-2xl hover:border-ember-hot hover:bg-ember/10 transition-all text-xl"
             >
               Soy taller
             </Link>
