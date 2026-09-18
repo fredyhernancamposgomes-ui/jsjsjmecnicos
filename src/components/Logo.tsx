@@ -56,7 +56,7 @@ const Logo: React.FC<LogoProps> = ({
       </svg>
 
           {showText && (
-            <span className={`font-display font-semibold tracking-tight ${s.text} ${textColor}`}>
+            <span className={`font-display font-bold tracking-tight ${s.text} ${textColor}`}>
               Taller<span className="text-ember">Ya</span>
             </span>
           )}    </div>
