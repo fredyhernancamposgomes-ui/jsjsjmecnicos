@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
         {/* Bottom */}
         <div className="pt-8 border-t border-line-soft flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-smoke">
-            © 2024 TallerYa. Todos los derechos reservados.
+            © 2024 TallerYa — Llegamos hasta donde más lo necesites
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-xs text-smoke hover:text-bone transition-colors">Términos</a>

@@ -90,7 +90,7 @@ const HeroSection: React.FC = () => {
           </ScrollReveal>
 
           {/* Headline masivo con Instrument Serif */}
-          <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-[-0.02em] leading-[0.85] text-bone mb-8">
+          <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-[-0.02em] leading-[0.85] text-bone mb-12">
             <WordReveal delay={0.3}>Llegamos hasta</WordReveal>
             <br />
             <WordReveal delay={0.5}>donde más</WordReveal>
@@ -172,11 +172,11 @@ const ManifestoSection: React.FC = () => {
   const { ref, isVisible } = useInView(0.3);
 
   return (
-    <section ref={ref} className="py-40 px-6 lg:px-8 relative overflow-hidden">
+    <section ref={ref} className="py-48 px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-6xl">
           <p 
-            className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-8"
+            className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-10"
             style={{
               opacity: isVisible ? 1 : 0,
               transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -186,7 +186,7 @@ const ManifestoSection: React.FC = () => {
             Nuestro manifiesto
           </p>
           
-          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-[-0.02em] leading-[1.1] text-bone">
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-[-0.02em] leading-[1.15] text-bone">
             <WordReveal delay={0.3}>No somos un taller.</WordReveal>
             <br />
             <WordReveal delay={0.6}>Somos el puente entre</WordReveal>
@@ -213,26 +213,29 @@ const StatsSection: React.FC = () => {
   const rating = useCountUp(48, 1800, isVisible);
 
   return (
-    <section ref={ref} className="py-32 px-6 lg:px-8 border-y border-line-soft">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
+    <section ref={ref} className="py-40 px-6 lg:px-8 border-y border-line-soft relative overflow-hidden">
+      {/* Glow background */}
+      <div className="absolute inset-0 mesh-gradient opacity-60" />
+      
+      <div className="max-w-7xl mx-auto relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-20 md:gap-12">
           <div className="text-center md:text-left">
             <div className="font-display text-8xl sm:text-9xl font-normal tracking-tighter text-bone leading-none">
-              {talleres}<span className="text-ember">+</span>
+              {talleres}<span className="text-ember-hot">+</span>
             </div>
-            <p className="text-sm text-smoke uppercase tracking-widest font-grotesk mt-4">Talleres verificados</p>
+            <p className="text-sm text-smoke uppercase tracking-widest font-grotesk mt-6">Talleres verificados</p>
           </div>
           <div className="text-center md:text-left md:border-x border-line-soft px-8">
             <div className="font-display text-8xl sm:text-9xl font-normal tracking-tighter text-bone leading-none">
-              {clientes}<span className="text-ember">K+</span>
+              {clientes}<span className="text-ember-hot">K+</span>
             </div>
-            <p className="text-sm text-smoke uppercase tracking-widest font-grotesk mt-4">Clientes satisfechos</p>
+            <p className="text-sm text-smoke uppercase tracking-widest font-grotesk mt-6">Clientes satisfechos</p>
           </div>
           <div className="text-center md:text-left">
             <div className="font-display text-8xl sm:text-9xl font-normal tracking-tighter leading-none">
-              <span className="text-bone">{(rating / 10).toFixed(1)}</span><span className="text-ember">★</span>
+              <span className="text-bone">{(rating / 10).toFixed(1)}</span><span className="text-ember-hot">★</span>
             </div>
-            <p className="text-sm text-smoke uppercase tracking-widest font-grotesk mt-4">Calificación promedio</p>
+            <p className="text-sm text-smoke uppercase tracking-widest font-grotesk mt-6">Calificación promedio</p>
           </div>
         </div>
       </div>
@@ -245,11 +248,11 @@ const StatsSection: React.FC = () => {
 // ============================================
 const BentoServices: React.FC = () => {
   return (
-    <section className="py-32 px-6 lg:px-8">
+    <section className="py-48 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
-          <div className="max-w-3xl mb-16">
-            <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-4">Servicios</p>
+          <div className="max-w-3xl mb-20">
+            <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-5">Servicios</p>
             <h2 className="font-display text-5xl sm:text-6xl md:text-7xl font-normal tracking-[-0.02em] leading-[0.9] text-bone">
               Todo lo que tu auto
               <span className="italic text-gradient-ember"> necesita.</span>
@@ -354,11 +357,11 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section className="py-32 px-6 lg:px-8 bg-ink-soft border-y border-line-soft">
+    <section className="py-48 px-6 lg:px-8 bg-ink-soft border-y border-line-soft">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
-          <div className="max-w-3xl mb-20">
-            <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-4">Cómo funciona</p>
+          <div className="max-w-3xl mb-24">
+            <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-5">Cómo funciona</p>
             <h2 className="font-display text-5xl sm:text-6xl md:text-7xl font-normal tracking-[-0.02em] leading-[0.9] text-bone">
               Tres pasos.
               <br />
@@ -423,12 +426,12 @@ const FeaturedTalleres: React.FC = () => {
   };
 
   return (
-    <section className="py-32 px-6 lg:px-8">
+    <section className="py-48 px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-end justify-between mb-12 flex-wrap gap-6">
+        <div className="flex items-end justify-between mb-16 flex-wrap gap-6">
           <ScrollReveal>
             <div>
-              <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-4">Destacados</p>
+              <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-5">Destacados</p>
               <h2 className="font-display text-5xl sm:text-6xl font-normal tracking-[-0.02em] text-bone">
                 Los mejor <span className="italic text-gradient-ember">calificados.</span>
               </h2>
@@ -501,11 +504,11 @@ const TestimonialsSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-32 px-6 lg:px-8 bg-ink-soft border-y border-line-soft">
+    <section className="py-48 px-6 lg:px-8 bg-ink-soft border-y border-line-soft">
       <div className="max-w-6xl mx-auto">
         <ScrollReveal>
-          <div className="text-center mb-16">
-            <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-4">Testimonios</p>
+          <div className="text-center mb-20">
+            <p className="text-xs text-ember uppercase tracking-widest font-grotesk font-medium mb-5">Testimonios</p>
             <h2 className="font-display text-5xl sm:text-6xl font-normal tracking-[-0.02em] text-bone">
               Lo que dice la <span className="italic text-gradient-ember">comunidad.</span>
             </h2>
@@ -568,12 +571,16 @@ const FinalCTA: React.FC = () => {
   const { ref, isVisible } = useInView(0.3);
 
   return (
-    <section ref={ref} className="py-40 px-6 lg:px-8 relative overflow-hidden">
-      <div className="absolute inset-0 mesh-gradient" />
+    <section ref={ref} className="py-56 px-6 lg:px-8 relative overflow-hidden">
+      {/* Dramatic background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 mesh-gradient opacity-80" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-ember/5 rounded-full blur-3xl" />
+      </div>
       
       <div className="max-w-5xl mx-auto text-center relative">
         <h2
-          className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-[-0.03em] leading-[0.85] text-bone mb-8"
+          className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-normal tracking-[-0.03em] leading-[0.85] text-bone mb-12"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(40px) scale(0.95)',
@@ -585,7 +592,7 @@ const FinalCTA: React.FC = () => {
           <span className="text-gradient-ember italic">empezar?</span>
         </h2>
         <p
-          className="text-lg text-ash max-w-xl mx-auto mb-12"
+          className="text-lg text-ash max-w-xl mx-auto mb-16"
           style={{
             opacity: isVisible ? 1 : 0,
             transition: 'opacity 1s ease 0.3s'
@@ -594,7 +601,7 @@ const FinalCTA: React.FC = () => {
           Únete a la comunidad automotriz más grande del Perú.
         </p>
         <div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-5 justify-center"
           style={{
             opacity: isVisible ? 1 : 0,
             transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
@@ -604,16 +611,16 @@ const FinalCTA: React.FC = () => {
           <MagneticButton>
             <Link
               to="/buscar"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-bone text-ink font-semibold rounded-2xl hover:bg-bone/90 transition-all glow-on-hover group"
+              className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-ember text-ink font-bold rounded-2xl hover:bg-ember-hot transition-all glow-on-hover group text-lg"
             >
               Buscar taller
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </MagneticButton>
           <MagneticButton>
             <Link
               to="/registro"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-line text-bone font-medium rounded-2xl hover:border-bone transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-10 py-5 border-2 border-ember/50 text-ember font-bold rounded-2xl hover:border-ember hover:bg-ember/10 transition-all text-lg"
             >
               Soy taller
             </Link>
