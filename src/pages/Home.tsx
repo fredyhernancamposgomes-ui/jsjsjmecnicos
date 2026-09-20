@@ -26,8 +26,6 @@ const Home: React.FC = () => {
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
       
       <HeroSection />
-      <VehiclesSection />
-      <ManifestoSection />
       <AuxilioSection />
       <StatsSection />
       <ServicesSection />
@@ -92,9 +90,12 @@ const HeroSection: React.FC = () => {
           </span>
         </h1>
 
-        {/* Subtitle - Incluye todos los vehículos */}
+        {/* Subtitle - Eslógan secundario + descripción */}
         <ScrollReveal delay={0.7}>
-          <p className="text-lg sm:text-xl text-ash max-w-2xl mx-auto leading-relaxed mb-12">
+          <p className="text-xl sm:text-2xl text-ash max-w-2xl mx-auto leading-relaxed mb-4">
+            Llegamos hasta donde más lo necesites.
+          </p>
+          <p className="text-lg text-smoke max-w-2xl mx-auto leading-relaxed mb-12">
             Talleres, repuestos y auxilio para autos, motos, camiones y más.
           </p>
         </ScrollReveal>
@@ -132,86 +133,6 @@ const HeroSection: React.FC = () => {
             </button>
           </form>
         </ScrollReveal>
-      </div>
-    </section>
-  );
-};
-
-// ============================================
-// VEHICLES - Para todo tipo de vehículos
-// ============================================
-const VehiclesSection: React.FC = () => {
-  const vehicles = [
-    { icon: '🚗', name: 'Autos', desc: 'Sedanes, SUVs, compactos' },
-    { icon: '🏍️', name: 'Motos', desc: 'Deportiva, trabajo, delivery' },
-    { icon: '🚚', name: 'Camiones', desc: 'Carga ligera y pesada' },
-    { icon: '🚌', name: 'Buses', desc: 'Urbano e interprovincial' },
-    { icon: '🚜', name: 'Maquinaria', desc: 'Agrícola e industrial' },
-    { icon: '🏎️', name: 'Especiales', desc: 'Clásicos, eléctricos, híbridos' },
-  ];
-
-  return (
-    <section className="py-32 px-6 lg:px-8 bg-ink-soft">
-      <div className="max-w-7xl mx-auto">
-        <ScrollReveal>
-          <div className="text-center mb-16">
-            <p className="text-sm text-ember uppercase tracking-widest font-semibold mb-4">Para todo vehículo</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-bone">
-              No importa qué manejes.
-            </h2>
-          </div>
-        </ScrollReveal>
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {vehicles.map((vehicle, i) => (
-            <ScrollReveal key={vehicle.name} delay={i * 0.1}>
-              <div className="group p-6 bg-ink rounded-2xl border border-bone/5 hover:border-ember/30 transition-all card-hover text-center">
-                <div className="text-5xl mb-3 group-hover:scale-110 transition-transform">
-                  {vehicle.icon}
-                </div>
-                <h3 className="font-display text-lg font-semibold text-bone mb-1 group-hover:text-ember transition-colors">
-                  {vehicle.name}
-                </h3>
-                <p className="text-ash text-xs">
-                  {vehicle.desc}
-                </p>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
-
-// ============================================
-// MANIFIESTO - SIMPLE
-// ============================================
-const ManifestoSection: React.FC = () => {
-  const { ref, isVisible } = useInView(0.3);
-
-  return (
-    <section ref={ref} className="py-48 px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto text-center">
-        <p 
-          className="text-sm text-ember uppercase tracking-widest font-semibold mb-8"
-          style={{
-            opacity: isVisible ? 1 : 0,
-            transition: 'opacity 0.6s ease 0.2s'
-          }}
-        >
-          Nuestro manifiesto
-        </p>
-        
-        <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight text-bone">
-          <WordReveal delay={0.3}>Tu red de</WordReveal>
-          <br />
-          <span className="text-ember">
-            <WordReveal delay={0.6}>confianza.</WordReveal>
-          </span>
-          <br />
-          <WordReveal delay={0.9}>Tu aliado mecánico.</WordReveal>
-        </h2>
       </div>
     </section>
   );
@@ -515,7 +436,7 @@ const FinalCTA: React.FC = () => {
             transition: 'opacity 0.8s ease 0.2s'
           }}
         >
-          Únete a la red de confianza para tu vehículo.
+          Únete a la red de talleres más grande del Perú.
         </p>
         <div
           className="flex flex-col sm:flex-row gap-4 justify-center"

@@ -11,10 +11,7 @@ const Footer: React.FC = () => {
           <div className="md:col-span-4">
             <Logo size="md" />
             <p className="mt-5 text-sm text-smoke leading-relaxed max-w-xs">
-              Tu red de confianza para autos, motos, camiones y más.
-            </p>
-            <p className="mt-4 text-sm text-ember font-display">
-              "Reparamos lo que mueve al Perú"
+              Reparamos lo que mueve al Perú. Llegamos hasta donde más lo necesites.
             </p>
           </div>
 
