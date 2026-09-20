@@ -11,10 +11,10 @@ const Footer: React.FC = () => {
           <div className="md:col-span-4">
             <Logo size="md" />
             <p className="mt-5 text-sm text-smoke leading-relaxed max-w-xs">
-              La plataforma que conecta clientes con talleres de confianza en todo el Perú.
+              Tu red de confianza para autos, motos, camiones y más.
             </p>
             <p className="mt-4 text-sm text-ember font-display">
-              "Llegamos hasta donde más lo necesites"
+              "Reparamos lo que mueve al Perú"
             </p>
           </div>
 
@@ -30,12 +30,13 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="text-xs text-smoke uppercase tracking-widest font-medium mb-5">Servicios</h4>
+            <h4 className="text-xs text-smoke uppercase tracking-widest font-medium mb-5">Vehículos</h4>
             <ul className="space-y-3">
-              <li><span className="text-ash text-sm">Frenos</span></li>
-              <li><span className="text-ash text-sm">Motor</span></li>
-              <li><span className="text-ash text-sm">Eléctrico</span></li>
-              <li><span className="text-ash text-sm">Auxilio 24/7</span></li>
+              <li><span className="text-ash text-sm">Autos</span></li>
+              <li><span className="text-ash text-sm">Motos</span></li>
+              <li><span className="text-ash text-sm">Camiones</span></li>
+              <li><span className="text-ash text-sm">Buses</span></li>
+              <li><span className="text-ash text-sm">Maquinaria</span></li>
             </ul>
           </div>
 

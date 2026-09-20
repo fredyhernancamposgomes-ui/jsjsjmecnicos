@@ -26,6 +26,7 @@ const Home: React.FC = () => {
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
       
       <HeroSection />
+      <VehiclesSection />
       <ManifestoSection />
       <AuxilioSection />
       <StatsSection />
@@ -82,19 +83,19 @@ const HeroSection: React.FC = () => {
           </div>
         </ScrollReveal>
 
-        {/* Headline - 2 líneas máximo */}
+        {/* Headline - Corto y poderoso */}
         <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.1] text-bone mb-8">
-          <WordReveal delay={0.3}>Llegamos hasta donde</WordReveal>
+          <WordReveal delay={0.3}>Reparamos lo que</WordReveal>
           <br />
           <span className="text-ember">
-            <WordReveal delay={0.5}>más lo necesites.</WordReveal>
+            <WordReveal delay={0.5}>mueve al Perú.</WordReveal>
           </span>
         </h1>
 
-        {/* Subtitle */}
+        {/* Subtitle - Incluye todos los vehículos */}
         <ScrollReveal delay={0.7}>
           <p className="text-lg sm:text-xl text-ash max-w-2xl mx-auto leading-relaxed mb-12">
-            La plataforma que conecta clientes con talleres de confianza y talleres con proveedores de repuestos.
+            Talleres, repuestos y auxilio para autos, motos, camiones y más.
           </p>
         </ScrollReveal>
 
@@ -137,6 +138,53 @@ const HeroSection: React.FC = () => {
 };
 
 // ============================================
+// VEHICLES - Para todo tipo de vehículos
+// ============================================
+const VehiclesSection: React.FC = () => {
+  const vehicles = [
+    { icon: '🚗', name: 'Autos', desc: 'Sedanes, SUVs, compactos' },
+    { icon: '🏍️', name: 'Motos', desc: 'Deportiva, trabajo, delivery' },
+    { icon: '🚚', name: 'Camiones', desc: 'Carga ligera y pesada' },
+    { icon: '🚌', name: 'Buses', desc: 'Urbano e interprovincial' },
+    { icon: '🚜', name: 'Maquinaria', desc: 'Agrícola e industrial' },
+    { icon: '🏎️', name: 'Especiales', desc: 'Clásicos, eléctricos, híbridos' },
+  ];
+
+  return (
+    <section className="py-32 px-6 lg:px-8 bg-ink-soft">
+      <div className="max-w-7xl mx-auto">
+        <ScrollReveal>
+          <div className="text-center mb-16">
+            <p className="text-sm text-ember uppercase tracking-widest font-semibold mb-4">Para todo vehículo</p>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-bone">
+              No importa qué manejes.
+            </h2>
+          </div>
+        </ScrollReveal>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {vehicles.map((vehicle, i) => (
+            <ScrollReveal key={vehicle.name} delay={i * 0.1}>
+              <div className="group p-6 bg-ink rounded-2xl border border-bone/5 hover:border-ember/30 transition-all card-hover text-center">
+                <div className="text-5xl mb-3 group-hover:scale-110 transition-transform">
+                  {vehicle.icon}
+                </div>
+                <h3 className="font-display text-lg font-semibold text-bone mb-1 group-hover:text-ember transition-colors">
+                  {vehicle.name}
+                </h3>
+                <p className="text-ash text-xs">
+                  {vehicle.desc}
+                </p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ============================================
 // MANIFIESTO - SIMPLE
 // ============================================
 const ManifestoSection: React.FC = () => {
@@ -156,15 +204,13 @@ const ManifestoSection: React.FC = () => {
         </p>
         
         <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight text-bone">
-          <WordReveal delay={0.3}>No somos un taller.</WordReveal>
-          <br />
-          <WordReveal delay={0.6}>Somos el puente entre</WordReveal>
+          <WordReveal delay={0.3}>Tu red de</WordReveal>
           <br />
           <span className="text-ember">
-            <WordReveal delay={0.9}>quien necesita</WordReveal>
+            <WordReveal delay={0.6}>confianza.</WordReveal>
           </span>
           <br />
-          <WordReveal delay={1.2}>y quien sabe hacer.</WordReveal>
+          <WordReveal delay={0.9}>Tu aliado mecánico.</WordReveal>
         </h2>
       </div>
     </section>
@@ -274,7 +320,7 @@ const StatsSection: React.FC = () => {
 // SERVICIOS - GRID SIMPLE
 // ============================================
 const ServicesSection: React.FC = () => {
-  const services = ['Frenos', 'Motor', 'Eléctrico', 'Suspensión', 'Pintura', 'Aire acondicionado'];
+  const services = ['Frenos', 'Motor', 'Eléctrico', 'Suspensión', 'Pintura', 'Aire acondicionado', 'Transmisión', 'Diagnóstico', 'Auxilio mecánico'];
 
   return (
     <section className="py-48 px-6 lg:px-8">
@@ -283,7 +329,7 @@ const ServicesSection: React.FC = () => {
           <div className="text-center mb-20">
             <p className="text-sm text-ember uppercase tracking-widest font-semibold mb-4">Servicios</p>
             <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-bone">
-              Todo lo que tu auto necesita.
+              Todo lo que tu vehículo necesita.
             </h2>
           </div>
         </ScrollReveal>
@@ -469,7 +515,7 @@ const FinalCTA: React.FC = () => {
             transition: 'opacity 0.8s ease 0.2s'
           }}
         >
-          Únete a la comunidad automotriz más grande del Perú.
+          Únete a la red de confianza para tu vehículo.
         </p>
         <div
           className="flex flex-col sm:flex-row gap-4 justify-center"
