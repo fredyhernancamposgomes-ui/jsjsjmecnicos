@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Star, ChevronLeft, ChevronRight, CircleDot, Cog, Zap, Layers, Settings2, MonitorSmartphone } from 'lucide-react';
 import { talleres, SERVICIOS, departamentos } from '../data';
 import { useInView, useScrollProgress, useCountUp } from '../hooks/useAnimations';
 import { WordReveal, ScrollReveal } from '../components/Animations';
@@ -250,12 +250,12 @@ const StatsSection: React.FC = () => {
 // ============================================
 const ServicesSection: React.FC = () => {
   const services = [
-    { name: 'Frenos', icon: '🔧' },
-    { name: 'Motor', icon: '⚙️' },
-    { name: 'Eléctrico', icon: '⚡' },
-    { name: 'Suspensión', icon: '🔩' },
-    { name: 'Transmisión', icon: '🛠️' },
-    { name: 'Diagnóstico', icon: '💻' }
+    { name: 'Frenos', icon: <CircleDot className="w-12 h-12" /> },
+    { name: 'Motor', icon: <Cog className="w-12 h-12" /> },
+    { name: 'Eléctrico', icon: <Zap className="w-12 h-12" /> },
+    { name: 'Suspensión', icon: <Layers className="w-12 h-12" /> },
+    { name: 'Transmisión', icon: <Settings2 className="w-12 h-12" /> },
+    { name: 'Diagnóstico', icon: <MonitorSmartphone className="w-12 h-12" /> }
   ];
 
   return (
@@ -274,7 +274,7 @@ const ServicesSection: React.FC = () => {
           {services.map((servicio, i) => (
             <ScrollReveal key={servicio.name} delay={i * 0.1}>
               <div className="group p-8 bg-ink rounded-2xl border border-bone/5 hover:border-ember/30 transition-all card-hover text-center">
-                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform">
+                <div className="text-ember mb-6 group-hover:scale-110 transition-transform">
                   {servicio.icon}
                 </div>
                 <h3 className="font-display text-2xl font-semibold text-bone group-hover:text-ember transition-colors">
