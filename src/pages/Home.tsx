@@ -85,12 +85,9 @@ const HeroSection: React.FC = () => {
           </span>
         </h1>
 
-        {/* Subtitle - Eslógan secundario + descripción */}
+        {/* Subtitle */}
         <ScrollReveal delay={0.7}>
-          <p className="text-xl sm:text-2xl text-ash max-w-2xl mx-auto leading-relaxed mb-4">
-            Llegamos hasta donde más lo necesites.
-          </p>
-          <p className="text-lg text-smoke max-w-2xl mx-auto leading-relaxed mb-12">
+          <p className="text-xl sm:text-2xl text-ash max-w-2xl mx-auto leading-relaxed mb-12">
             Talleres, repuestos y auxilio para autos, motos, camiones y más.
           </p>
         </ScrollReveal>
@@ -140,7 +137,7 @@ const BenefitsSection: React.FC = () => {
   const benefits = [
     {
       icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
@@ -149,7 +146,7 @@ const BenefitsSection: React.FC = () => {
     },
     {
       icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
         </svg>
       ),
@@ -158,16 +155,16 @@ const BenefitsSection: React.FC = () => {
     },
     {
       icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
       title: 'Auxilio 24/7',
-      description: 'Llegamos en 30 minutos. Disponible las 24 horas, los 7 días de la semana.'
+      description: 'Llegamos hasta donde más lo necesites. En 30 minutos o menos, disponible las 24 horas.'
     },
     {
       icon: (
-        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.588-.995l-.008-.007a2.126 2.126 0 00-3.003 0l-.008.007a2.126 2.126 0 00-.588.995v.75c0 .591.212 1.163.598 1.611l.007.008a2.126 2.126 0 003.003 0l.008-.007a2.126 2.126 0 00.588-.995v-.75zM6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM17.25 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
         </svg>
       ),
@@ -188,17 +185,17 @@ const BenefitsSection: React.FC = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {benefits.map((benefit, i) => (
             <ScrollReveal key={i} delay={i * 0.1}>
-              <div className="group p-8 bg-ink-soft rounded-2xl border border-bone/5 hover:border-ember/30 transition-all card-hover">
-                <div className="w-14 h-14 rounded-xl bg-ember/10 flex items-center justify-center text-ember mb-6 group-hover:scale-110 transition-transform">
+              <div className="group p-10 bg-ink-soft rounded-2xl border border-bone/5 hover:border-ember/30 transition-all card-hover min-h-[300px] flex flex-col">
+                <div className="w-20 h-20 rounded-xl bg-ember/10 flex items-center justify-center text-ember mb-8 group-hover:scale-110 transition-transform">
                   {benefit.icon}
                 </div>
-                <h3 className="font-display text-xl font-semibold text-bone mb-3 group-hover:text-ember transition-colors">
+                <h3 className="font-display text-2xl font-semibold text-bone mb-4 group-hover:text-ember transition-colors">
                   {benefit.title}
                 </h3>
-                <p className="text-ash leading-relaxed">
+                <p className="text-ash leading-relaxed text-lg">
                   {benefit.description}
                 </p>
               </div>
@@ -221,26 +218,26 @@ const StatsSection: React.FC = () => {
 
   return (
     <section ref={ref} className="py-48 px-6 lg:px-8 border-y border-line">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-24 md:gap-32">
           <div className="text-center">
-            <div className="font-display text-5xl sm:text-6xl font-bold tracking-tight text-bone mb-3">
+            <div className="font-display text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-bone mb-4">
               {talleresCount}<span className="text-ember">+</span>
             </div>
-            <p className="text-ash text-base">Talleres verificados</p>
+            <p className="text-ash text-lg">Talleres verificados</p>
           </div>
           <div className="text-center">
-            <div className="font-display text-5xl sm:text-6xl font-bold tracking-tight text-bone mb-3">
+            <div className="font-display text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight text-bone mb-4">
               {clientesCount}<span className="text-ember">K+</span>
             </div>
-            <p className="text-ash text-base">Clientes satisfechos</p>
+            <p className="text-ash text-lg">Clientes satisfechos</p>
           </div>
           <div className="text-center">
-            <div className="font-display text-5xl sm:text-6xl font-bold tracking-tight leading-none mb-3">
+            <div className="font-display text-6xl sm:text-7xl lg:text-8xl font-bold tracking-tight leading-none mb-4">
               <span className="text-bone">{(ratingCount / 10).toFixed(1)}</span>
               <span className="text-ember">★</span>
             </div>
-            <p className="text-ash text-base">Calificación promedio</p>
+            <p className="text-ash text-lg">Calificación promedio</p>
           </div>
         </div>
       </div>
@@ -252,11 +249,21 @@ const StatsSection: React.FC = () => {
 // SERVICIOS - GRID SIMPLE
 // ============================================
 const ServicesSection: React.FC = () => {
-  const services = ['Frenos', 'Motor', 'Eléctrico', 'Suspensión', 'Pintura', 'Aire acondicionado', 'Transmisión', 'Diagnóstico', 'Auxilio mecánico'];
+  const services = [
+    { name: 'Frenos', desc: 'Pastillas, discos, líquido de frenos' },
+    { name: 'Motor', desc: 'Reparación completa y mantenimiento' },
+    { name: 'Eléctrico', desc: 'Baterías, alternadores, cableado' },
+    { name: 'Suspensión', desc: 'Amortiguadores, rotulas, bujes' },
+    { name: 'Transmisión', desc: 'Cajas manuales y automáticas' },
+    { name: 'Aire acondicionado', desc: 'Recarga, reparación, mantenimiento' },
+    { name: 'Diagnóstico', desc: 'Escáner computarizado avanzado' },
+    { name: 'Pintura y latonería', desc: 'Acabado profesional' },
+    { name: 'Auxilio mecánico', desc: 'Servicio 24/7 en carretera' }
+  ];
 
   return (
-    <section className="py-48 px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <section className="py-48 px-6 lg:px-8 bg-ink-soft">
+      <div className="max-w-5xl mx-auto">
         <ScrollReveal>
           <div className="text-center mb-20">
             <p className="text-sm text-ember uppercase tracking-widest font-semibold mb-4">Servicios</p>
@@ -266,15 +273,18 @@ const ServicesSection: React.FC = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="space-y-2">
           {services.map((servicio, i) => (
-            <ScrollReveal key={servicio} delay={i * 0.1}>
-              <div className="group p-8 bg-ink-soft rounded-2xl border border-bone/5 hover:border-ember/30 transition-all card-hover">
-                <h3 className="font-display text-2xl font-semibold text-bone mb-3 group-hover:text-ember transition-colors">
-                  {servicio}
-                </h3>
-                <p className="text-ash">
-                  Servicio profesional con garantía y técnicos certificados.
+            <ScrollReveal key={servicio.name} delay={i * 0.05}>
+              <div className="group flex items-center justify-between p-6 rounded-xl border border-bone/5 hover:border-ember/30 hover:bg-ink transition-all cursor-pointer">
+                <div className="flex items-center gap-6">
+                  <span className="text-smoke text-sm font-mono w-8">{String(i + 1).padStart(2, '0')}</span>
+                  <h3 className="font-display text-xl sm:text-2xl font-semibold text-bone group-hover:text-ember transition-colors">
+                    {servicio.name}
+                  </h3>
+                </div>
+                <p className="text-ash text-sm sm:text-base hidden sm:block">
+                  {servicio.desc}
                 </p>
               </div>
             </ScrollReveal>

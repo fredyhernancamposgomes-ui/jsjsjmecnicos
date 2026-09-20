@@ -11,7 +11,10 @@ const Footer: React.FC = () => {
           <div className="md:col-span-4">
             <Logo size="md" />
             <p className="mt-5 text-sm text-smoke leading-relaxed max-w-xs">
-              Reparamos lo que mueve al Perú. Llegamos hasta donde más lo necesites.
+              Reparamos lo que mueve al Perú.
+            </p>
+            <p className="mt-2 text-sm text-ember italic">
+              "Llegamos hasta donde más lo necesites"
             </p>
           </div>
 
