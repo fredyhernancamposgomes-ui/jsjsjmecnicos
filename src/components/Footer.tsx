@@ -20,9 +20,10 @@ const Footer: React.FC = () => {
             <h4 className="text-xs text-smoke uppercase tracking-widest font-medium mb-5">Plataforma</h4>
             <ul className="space-y-3">
               <li><Link to="/buscar" className="text-ash hover:text-bone text-sm transition-colors">Talleres</Link></li>
+              <li><Link to="/tienda" className="text-ash hover:text-bone text-sm transition-colors">Tienda</Link></li>
+              <li><Link to="/auxilio" className="text-ash hover:text-bone text-sm transition-colors">Auxilio 24/7</Link></li>
+              <li><Link to="/resenas" className="text-ash hover:text-bone text-sm transition-colors">Reseñas</Link></li>
               <li><Link to="/registro" className="text-ash hover:text-bone text-sm transition-colors">Para talleres</Link></li>
-              <li><Link to="/repuestos" className="text-ash hover:text-bone text-sm transition-colors">Repuestos</Link></li>
-              <li><Link to="/admin" className="text-ash hover:text-bone text-sm transition-colors">Admin</Link></li>
             </ul>
           </div>
 

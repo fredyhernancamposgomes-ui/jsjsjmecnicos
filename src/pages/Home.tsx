@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, Star, ChevronLeft, ChevronRight, MessageCircle } from 'lucide-react';
-import { talleres, testimonios, SERVICIOS, departamentos } from '../data';
+import { ArrowRight, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { talleres, SERVICIOS, departamentos } from '../data';
 import { useInView, useScrollProgress, useCountUp } from '../hooks/useAnimations';
 import { WordReveal, ScrollReveal } from '../components/Animations';
 
@@ -9,10 +9,6 @@ import { WordReveal, ScrollReveal } from '../components/Animations';
 const IMG = {
   hero: 'https://image.qwenlm.ai/generated-images/7277ed6c-aeb8-4843-afba-1397604b3390/_result.png',
   workshop: 'https://image.qwenlm.ai/generated-images/fedb225b-b980-4a27-b64c-45ee2c976091/_result.png',
-  auxilio: 'https://image.qwenlm.ai/generated-images/0ef27cd8-5895-4585-aa49-5a8b2b0b6ea8/_result.png',
-  customer1: 'https://image.qwenlm.ai/generated-images/a6ed3c56-f377-4892-b4d4-d1b1dd530bbf/_result.png',
-  owner: 'https://image.qwenlm.ai/generated-images/e0f9423d-ddf5-401a-8c41-1a6cf10ac847/_result.png',
-  mechanic: 'https://image.qwenlm.ai/generated-images/9b90cf1e-c5c4-4f71-8c2f-515a4ac8963a/_result.png',
 };
 
 // ============================================
@@ -26,11 +22,10 @@ const Home: React.FC = () => {
       <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
       
       <HeroSection />
-      <AuxilioSection />
+      <BenefitsSection />
       <StatsSection />
       <ServicesSection />
       <FeaturedTalleres />
-      <TestimonialsSection />
       <FinalCTA />
     </div>
   );
@@ -139,61 +134,77 @@ const HeroSection: React.FC = () => {
 };
 
 // ============================================
-// AUXILIO 24/7 - CLÍMAX
+// QUÉ OFRECEMOS - BENEFICIOS
 // ============================================
-const AuxilioSection: React.FC = () => {
-  const { ref, isVisible } = useInView(0.3);
+const BenefitsSection: React.FC = () => {
+  const benefits = [
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      title: 'Talleres verificados',
+      description: 'Calificados por la comunidad. Solo los mejores pasan nuestro proceso de verificación.'
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z" />
+        </svg>
+      ),
+      title: 'Repuestos al mejor precio',
+      description: 'Accede a precios mayoristas y minoristas. Calidad garantizada en cada pieza.'
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      ),
+      title: 'Auxilio 24/7',
+      description: 'Llegamos en 30 minutos. Disponible las 24 horas, los 7 días de la semana.'
+    },
+    {
+      icon: (
+        <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.588-.995l-.008-.007a2.126 2.126 0 00-3.003 0l-.008.007a2.126 2.126 0 00-.588.995v.75c0 .591.212 1.163.598 1.611l.007.008a2.126 2.126 0 003.003 0l.008-.007a2.126 2.126 0 00.588-.995v-.75zM6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM17.25 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+        </svg>
+      ),
+      title: 'Soporte personalizado',
+      description: 'Te ayudamos a encontrar exactamente lo que necesitas. Atención humana y cercana.'
+    }
+  ];
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <img src={IMG.auxilio} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/70" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 lg:px-8 py-32">
-        {/* Badge */}
-        <ScrollReveal delay={0.2}>
-          <div className="inline-flex items-center gap-3 px-5 py-3 bg-bone/5 backdrop-blur-md border-2 border-ember rounded-full mb-10">
-            <div className="relative">
-              <span className="absolute inset-0 rounded-full bg-ember animate-ping opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-ember"></span>
-            </div>
-            <span className="text-bone font-bold">DISPONIBLE 24/7</span>
+    <section className="py-48 px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <ScrollReveal>
+          <div className="text-center mb-20">
+            <p className="text-sm text-ember uppercase tracking-widest font-semibold mb-4">Qué ofrecemos</p>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-bone">
+              Todo lo que necesitas en un solo lugar.
+            </h2>
           </div>
         </ScrollReveal>
 
-        {/* Headline */}
-        <h2 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight leading-[1.1] text-bone mb-8">
-          <WordReveal delay={0.3}>Auxilio mecánico</WordReveal>
-          <br />
-          <span className="text-ember">
-            <WordReveal delay={0.5}>24/7.</WordReveal>
-          </span>
-        </h2>
-
-        {/* Subtitle */}
-        <ScrollReveal delay={0.7}>
-          <p className="text-xl sm:text-2xl text-ash max-w-2xl leading-relaxed mb-12">
-            Se te averió el auto en la carretera a las 3am? <span className="text-bone font-semibold">Llegamos en 30 minutos.</span>
-          </p>
-        </ScrollReveal>
-
-        {/* CTA */}
-        <ScrollReveal delay={0.9}>
-          <a
-            href="https://wa.me/51999999999?text=Necesito auxilio mecánico urgente"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-ember text-bone font-bold text-lg rounded-xl hover:bg-ember-hot transition-colors btn-hover"
-          >
-            <MessageCircle size={20} />
-            Solicitar auxilio ahora
-            <ArrowRight size={18} />
-          </a>
-        </ScrollReveal>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {benefits.map((benefit, i) => (
+            <ScrollReveal key={i} delay={i * 0.1}>
+              <div className="group p-8 bg-ink-soft rounded-2xl border border-bone/5 hover:border-ember/30 transition-all card-hover">
+                <div className="w-14 h-14 rounded-xl bg-ember/10 flex items-center justify-center text-ember mb-6 group-hover:scale-110 transition-transform">
+                  {benefit.icon}
+                </div>
+                <h3 className="font-display text-xl font-semibold text-bone mb-3 group-hover:text-ember transition-colors">
+                  {benefit.title}
+                </h3>
+                <p className="text-ash leading-relaxed">
+                  {benefit.description}
+                </p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -340,69 +351,6 @@ const FeaturedTalleres: React.FC = () => {
           </Link>
         ))}
         <div className="w-6 lg:w-8 flex-shrink-0" />
-      </div>
-    </section>
-  );
-};
-
-// ============================================
-// TESTIMONIOS
-// ============================================
-const TestimonialsSection: React.FC = () => {
-  const [current, setCurrent] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-  const photos = [IMG.customer1, IMG.owner, IMG.mechanic, IMG.customer1];
-
-  useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonios.length);
-    }, 6000);
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, []);
-
-  return (
-    <section className="py-48 px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto">
-        <ScrollReveal>
-          <div className="text-center mb-20">
-            <p className="text-sm text-ember uppercase tracking-widest font-semibold mb-4">Testimonios</p>
-            <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-bone">
-              Lo que dice la comunidad.
-            </h2>
-          </div>
-        </ScrollReveal>
-
-        <div key={current} className="animate-fade-in">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="aspect-square rounded-3xl overflow-hidden">
-              <img src={photos[current]} alt={testimonios[current].nombre} className="w-full h-full object-cover" />
-            </div>
-            <div>
-              <p className="font-display text-2xl sm:text-3xl text-bone leading-snug mb-8">
-                "{testimonios[current].texto}"
-              </p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-ember/20 flex items-center justify-center text-ember font-bold">
-                  {testimonios[current].nombre.charAt(0)}
-                </div>
-                <div>
-                  <p className="text-bone font-semibold">{testimonios[current].nombre}</p>
-                  <p className="text-ash text-sm">{testimonios[current].rol}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="flex justify-center gap-2 mt-12">
-          {testimonios.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setCurrent(i)}
-              className={`h-1 rounded-full transition-all ${i === current ? 'bg-ember w-8' : 'bg-line w-4'}`}
-            />
-          ))}
-        </div>
       </div>
     </section>
   );
