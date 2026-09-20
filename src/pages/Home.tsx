@@ -250,20 +250,17 @@ const StatsSection: React.FC = () => {
 // ============================================
 const ServicesSection: React.FC = () => {
   const services = [
-    { name: 'Frenos', desc: 'Pastillas, discos, líquido de frenos' },
-    { name: 'Motor', desc: 'Reparación completa y mantenimiento' },
-    { name: 'Eléctrico', desc: 'Baterías, alternadores, cableado' },
-    { name: 'Suspensión', desc: 'Amortiguadores, rotulas, bujes' },
-    { name: 'Transmisión', desc: 'Cajas manuales y automáticas' },
-    { name: 'Aire acondicionado', desc: 'Recarga, reparación, mantenimiento' },
-    { name: 'Diagnóstico', desc: 'Escáner computarizado avanzado' },
-    { name: 'Pintura y latonería', desc: 'Acabado profesional' },
-    { name: 'Auxilio mecánico', desc: 'Servicio 24/7 en carretera' }
+    { name: 'Frenos', icon: '🔧' },
+    { name: 'Motor', icon: '⚙️' },
+    { name: 'Eléctrico', icon: '⚡' },
+    { name: 'Suspensión', icon: '🔩' },
+    { name: 'Transmisión', icon: '🛠️' },
+    { name: 'Diagnóstico', icon: '💻' }
   ];
 
   return (
     <section className="py-48 px-6 lg:px-8 bg-ink-soft">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <ScrollReveal>
           <div className="text-center mb-20">
             <p className="text-sm text-ember uppercase tracking-widest font-semibold mb-4">Servicios</p>
@@ -273,19 +270,16 @@ const ServicesSection: React.FC = () => {
           </div>
         </ScrollReveal>
 
-        <div className="space-y-2">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {services.map((servicio, i) => (
-            <ScrollReveal key={servicio.name} delay={i * 0.05}>
-              <div className="group flex items-center justify-between p-6 rounded-xl border border-bone/5 hover:border-ember/30 hover:bg-ink transition-all cursor-pointer">
-                <div className="flex items-center gap-6">
-                  <span className="text-smoke text-sm font-mono w-8">{String(i + 1).padStart(2, '0')}</span>
-                  <h3 className="font-display text-xl sm:text-2xl font-semibold text-bone group-hover:text-ember transition-colors">
-                    {servicio.name}
-                  </h3>
+            <ScrollReveal key={servicio.name} delay={i * 0.1}>
+              <div className="group p-8 bg-ink rounded-2xl border border-bone/5 hover:border-ember/30 transition-all card-hover text-center">
+                <div className="text-5xl mb-6 group-hover:scale-110 transition-transform">
+                  {servicio.icon}
                 </div>
-                <p className="text-ash text-sm sm:text-base hidden sm:block">
-                  {servicio.desc}
-                </p>
+                <h3 className="font-display text-2xl font-semibold text-bone group-hover:text-ember transition-colors">
+                  {servicio.name}
+                </h3>
               </div>
             </ScrollReveal>
           ))}
