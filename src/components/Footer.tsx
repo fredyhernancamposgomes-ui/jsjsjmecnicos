@@ -11,9 +11,9 @@ const Footer: React.FC = () => {
           <div className="md:col-span-4">
             <Logo size="md" />
             <p className="mt-5 text-sm text-smoke leading-relaxed max-w-xs">
-              La plataforma que conecta clientes con talleres de confianza en todo el Perú.
+              Reparamos lo que mueve al Perú.
             </p>
-            <p className="mt-4 text-sm text-ember font-display">
+            <p className="mt-2 text-sm text-ember italic">
               "Llegamos hasta donde más lo necesites"
             </p>
           </div>
@@ -23,19 +23,21 @@ const Footer: React.FC = () => {
             <h4 className="text-xs text-smoke uppercase tracking-widest font-medium mb-5">Plataforma</h4>
             <ul className="space-y-3">
               <li><Link to="/buscar" className="text-ash hover:text-bone text-sm transition-colors">Talleres</Link></li>
+              <li><Link to="/tienda" className="text-ash hover:text-bone text-sm transition-colors">Tienda</Link></li>
+              <li><Link to="/auxilio" className="text-ash hover:text-bone text-sm transition-colors">Auxilio 24/7</Link></li>
+              <li><Link to="/resenas" className="text-ash hover:text-bone text-sm transition-colors">Reseñas</Link></li>
               <li><Link to="/registro" className="text-ash hover:text-bone text-sm transition-colors">Para talleres</Link></li>
-              <li><Link to="/repuestos" className="text-ash hover:text-bone text-sm transition-colors">Repuestos</Link></li>
-              <li><Link to="/admin" className="text-ash hover:text-bone text-sm transition-colors">Admin</Link></li>
             </ul>
           </div>
 
           <div className="md:col-span-2">
-            <h4 className="text-xs text-smoke uppercase tracking-widest font-medium mb-5">Servicios</h4>
+            <h4 className="text-xs text-smoke uppercase tracking-widest font-medium mb-5">Vehículos</h4>
             <ul className="space-y-3">
-              <li><span className="text-ash text-sm">Frenos</span></li>
-              <li><span className="text-ash text-sm">Motor</span></li>
-              <li><span className="text-ash text-sm">Eléctrico</span></li>
-              <li><span className="text-ash text-sm">Auxilio 24/7</span></li>
+              <li><span className="text-ash text-sm">Autos</span></li>
+              <li><span className="text-ash text-sm">Motos</span></li>
+              <li><span className="text-ash text-sm">Camiones</span></li>
+              <li><span className="text-ash text-sm">Buses</span></li>
+              <li><span className="text-ash text-sm">Maquinaria</span></li>
             </ul>
           </div>
 
